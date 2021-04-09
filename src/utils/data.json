@@ -17,12 +17,12 @@
         },
         {
             "id": "a_3",
-            "name": "Iram",
+            "name": "Phone",
             "index": 3
         },
         {
             "id": "a_4",
-            "name": "Sugil",
+            "name": "Vaccination Center",
             "index": 4
         }
     ],
@@ -76,7 +76,7 @@
             "index": 2,
             "from": "a_0",
             "to": "a_2",
-            "message": "Open and click on CoWin icon",
+            "message": "Open and Tap 'CoWin' icon",
             "emotion": "😡",
             "comments": [
                 {
@@ -162,9 +162,9 @@
         {
             "id": "6_a_1_a_0",
             "index": 6,
-            "from": "a_1",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Enter OTP & Tap 'Proceed to verify'",
             "emotion": "😡",
             "comments": [
                 {
@@ -184,9 +184,9 @@
         {
             "id": "7_a_1_a_3",
             "index": 7,
-            "from": "a_1",
-            "to": "a_3",
-            "message": "discuss the UI designs and componenets needed",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Select Photo ID card type",
             "emotion": "😳",
             "comments": [
                 {
@@ -206,9 +206,9 @@
         {
             "id": "8_a_2_a_1",
             "index": 8,
-            "from": "a_2",
-            "to": "a_1",
-            "message": "share AWS credentials",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Enter Photo ID number",
             "emotion": "😡",
             "comments": [
                 {
@@ -228,9 +228,9 @@
         {
             "id": "9_a_2_a_1",
             "index": 9,
-            "from": "a_4",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Enter Beneficiary name",
             "emotion": "😡",
             "comments": [
                 {
@@ -250,9 +250,9 @@
         {
             "id": "10_a_1_a_0",
             "index": 10,
-            "from": "a_1",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Select Gender",
             "emotion": "😡",
             "comments": [
                 {
@@ -272,9 +272,9 @@
         {
             "id": "11_a_1_a_0",
             "index": 11,
-            "from": "a_1",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Enter Year of Birth",
             "emotion": "😡",
             "comments": [
                 {
@@ -294,9 +294,9 @@
         {
             "id": "12_a_1_a_0",
             "index": 12,
-            "from": "a_1",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Tap 'Register'",
             "emotion": "😡",
             "comments": [
                 {
@@ -317,8 +317,8 @@
             "id": "13_a_0_a_1",
             "index": 13,
             "from": "a_0",
-            "to": "a_1",
-            "message": "discuss the api design",
+            "to": "a_2",
+            "message": "Select beneficiaries using checkboxes",
             "emotion": "😡",
             "comments": [
                 {
@@ -338,9 +338,9 @@
         {
             "id": "14_a_1_a_3",
             "index": 14,
-            "from": "a_1",
-            "to": "a_3",
-            "message": "discuss the UI designs and componenets needed",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Tap 'Schedule Vaccination'",
             "emotion": "😳",
             "comments": [
                 {
@@ -360,9 +360,9 @@
         {
             "id": "15_a_2_a_1",
             "index": 15,
-            "from": "a_2",
-            "to": "a_1",
-            "message": "share AWS credentials",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Enter 'PIN Code'",
             "emotion": "😡",
             "comments": [
                 {
@@ -382,9 +382,9 @@
         {
             "id": "16_a_2_a_1",
             "index": 16,
-            "from": "a_4",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Select Payment Type (Free or Paid)",
             "emotion": "😡",
             "comments": [
                 {
@@ -404,9 +404,9 @@
         {
             "id": "17_a_1_a_0",
             "index": 17,
-            "from": "a_1",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Tap 'Find Vaccination Center'",
             "emotion": "😡",
             "comments": [
                 {
@@ -426,9 +426,9 @@
         {
             "id": "18_a_1_a_0",
             "index": 18,
-            "from": "a_1",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Select vaccination center",
             "emotion": "😡",
             "comments": [
                 {
@@ -448,9 +448,9 @@
         {
             "id": "19_a_1_a_0",
             "index": 19,
-            "from": "a_1",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Select Vaccination Date",
             "emotion": "😡",
             "comments": [
                 {
@@ -470,9 +470,9 @@
         {
             "id": "20_a_1_a_3",
             "index": 20,
-            "from": "a_1",
-            "to": "a_3",
-            "message": "discuss the UI designs and componenets needed",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Tap 'Check Availability'",
             "emotion": "😳",
             "comments": [
                 {
@@ -492,9 +492,9 @@
         {
             "id": "21_a_2_a_1",
             "index": 21,
-            "from": "a_2",
-            "to": "a_1",
-            "message": "share AWS credentials",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Select date and slot",
             "emotion": "😡",
             "comments": [
                 {
@@ -514,9 +514,75 @@
         {
             "id": "22_a_2_a_1",
             "index": 22,
-            "from": "a_4",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Tap 'Proceed'",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "23_a_2_a_1",
+            "index": 23,
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Tap 'Confirm Apppointment'",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "24_a_2_a_1",
+            "index": 24,
+            "from": "a_2",
+            "to": "a_3",
+            "message": "Sends Confirmation SMS",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "25_a_2_a_1",
+            "index": 25,
+            "from": "a_0",
+            "to": "a_4",
+            "message": "Visit 'Vaccination Center'",
             "emotion": "😡",
             "comments": [
                 {
