@@ -1,5 +1,5 @@
 body{
-  background: #1D2F6F;
+  background: hsl(227, 59%, 16%);
 }
 .App {
   text-align: center;
@@ -73,7 +73,7 @@ li{
 .header{
   z-index: 98;
   background: rgb(29,47,111);
-  background: linear-gradient(180deg, rgba(29,47,111,1) 90%, rgba(0,212,255,0) 100%);
+  background: linear-gradient(180deg,hsl(227, 59%, 16%) 90%, rgba(0,212,255,0) 100%);
   width: 100vw;
   height: 130px;
   position: fixed;

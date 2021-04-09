@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 .vl {
-    border-left: 2px solid #8391fada;
+    border-left: 2px solid hsla(233, 92%, 75%, 0.48);
     height: 120px;
   }
   
