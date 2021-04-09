@@ -6,22 +6,24 @@
     flex-direction: column;
 }
 .vl {
-    border-left: 2px solid #8390FA;
-    height: 50px;
+    border-left: 2px solid #8391fada;
+    height: 120px;
   }
   
   .thread-add-btn{
       border-radius: 999px;
-      height: 22px;
-      width: 22px;
-      font-size: 16px;
+      position: absolute;
+      bottom: 0;
+      height: 16px;
+      width: 16px;
+      font-size: 12px;
       line-height: 1;
-      background:#F9E9EC;
+      background:rgba(255, 255, 255, 0.596);
       display: block;
       color: #1D2F6F;
       font-weight: 800;
       border:none;
-      opacity: 0.2;
+      opacity: 0.1;
       transition-property: opacity;
       transition-duration: 0.3s;
   }
@@ -32,6 +34,7 @@
   }
 
   .active{
-    opacity: 0.2;
+    visibility: hidden;
+    opacity: 0.1;
     border:none;
 }

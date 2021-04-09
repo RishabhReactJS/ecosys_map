@@ -19,7 +19,7 @@ function App() {
 
   const CreateArrow = () => {
     return steps?.map(step =>
-      <Arrow index={step.index} start={step.index + "_" + step.from} end={step.index + "_" + step.to} deltaActor={1} />
+      <Arrow index={step.index} message={step.message} emotion={step.emotion} start={step.index + "_" + step.from} end={step.index + "_" + step.to} deltaActor={1} />
     )
   }
   return (

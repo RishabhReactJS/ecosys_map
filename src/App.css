@@ -78,3 +78,11 @@ li{
   height: 130px;
   position: fixed;
 }
+
+.arrow-message{
+  color: white;
+}
+
+.arrow-emoji{
+  font-size: 24px;
+}
