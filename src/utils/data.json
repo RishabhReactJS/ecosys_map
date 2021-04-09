@@ -2,37 +2,37 @@
     "actors": [
         {
             "id": "a_0",
-            "name": "Rishab",
+            "name": "Citizen",
             "index": 0
         },
         {
             "id": "a_1",
-            "name": "Banno",
+            "name": "Playstore",
             "index": 1
         },
         {
             "id": "a_2",
-            "name": "Saurabh",
-            "index": 2 
+            "name": "Aarogya Setu App",
+            "index": 2
         },
         {
             "id": "a_3",
             "name": "Iram",
-            "index": 3 
+            "index": 3
         },
         {
             "id": "a_4",
             "name": "Sugil",
-            "index": 4 
+            "index": 4
         }
     ],
-    "steps":[
+    "steps": [
         {
             "id": "0_a_0_a_1",
             "index": 0,
-            "from": "a_0" ,
+            "from": "a_0",
             "to": "a_1",
-            "message": "discuss the api design",
+            "message": "Open Play Store",
             "emotion": "😡",
             "comments": [
                 {
@@ -52,9 +52,9 @@
         {
             "id": "2_a_1_a_3",
             "index": 1,
-            "from": "a_1",
-            "to": "a_3",
-            "message": "discuss the UI designs and componenets needed",
+            "from": "a_0",
+            "to": "a_1",
+            "message": "Search and install Aarogya Setu App",
             "emotion": "😳",
             "comments": [
                 {
@@ -74,9 +74,9 @@
         {
             "id": "3_a_2_a_1",
             "index": 2,
-            "from": "a_2",
-            "to": "a_1",
-            "message": "share AWS credentials",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Open and click on CoWin icon",
             "emotion": "😡",
             "comments": [
                 {
@@ -96,9 +96,9 @@
         {
             "id": "3_a_2_a_1",
             "index": 3,
-            "from": "a_4",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Tap 'Vaccination'",
             "emotion": "😡",
             "comments": [
                 {
@@ -118,9 +118,9 @@
         {
             "id": "4_a_1_a_0",
             "index": 4,
-            "from": "a_1",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Tap 'Register Now'",
             "emotion": "😡",
             "comments": [
                 {
@@ -136,13 +136,13 @@
                     "ts": "1617812248"
                 }
             ]
-        }
-        ,{
+        },
+        {
             "id": "5_a_1_a_0",
             "index": 5,
-            "from": "a_1",
-            "to": "a_0",
-            "message": "Gop to darjeeling",
+            "from": "a_0",
+            "to": "a_2",
+            "message": "Enter Mobile Number & Tap 'Proceed to verify'",
             "emotion": "😡",
             "comments": [
                 {
@@ -158,7 +158,8 @@
                     "ts": "1617812248"
                 }
             ]
-        },{
+        },
+        {
             "id": "6_a_1_a_0",
             "index": 6,
             "from": "a_1",
@@ -267,8 +268,8 @@
                     "ts": "1617812248"
                 }
             ]
-        }
-        ,{
+        },
+        {
             "id": "11_a_1_a_0",
             "index": 11,
             "from": "a_1",
@@ -289,7 +290,8 @@
                     "ts": "1617812248"
                 }
             ]
-        },{
+        },
+        {
             "id": "12_a_1_a_0",
             "index": 12,
             "from": "a_1",
@@ -314,7 +316,7 @@
         {
             "id": "13_a_0_a_1",
             "index": 13,
-            "from": "a_0" ,
+            "from": "a_0",
             "to": "a_1",
             "message": "discuss the api design",
             "emotion": "😡",
@@ -420,8 +422,8 @@
                     "ts": "1617812248"
                 }
             ]
-        }
-        ,{
+        },
+        {
             "id": "18_a_1_a_0",
             "index": 18,
             "from": "a_1",
@@ -442,7 +444,8 @@
                     "ts": "1617812248"
                 }
             ]
-        },{
+        },
+        {
             "id": "19_a_1_a_0",
             "index": 19,
             "from": "a_1",
@@ -529,6 +532,6 @@
                     "ts": "1617812248"
                 }
             ]
-       }
+        }
     ]
 }
