@@ -22,7 +22,7 @@ export function Arrow(props) {
   return (
     <div className="svg-container" style={{
       "position": "absolute",
-      "top": `${p1.y + 1}px`,
+      "top": `${p1.y - 18}px`,
       "left": `${p2.x - p1.x > 0 ? p1.x - 2 : p2.x - 4}px`,
       "width": `${p2.x - p1.x > 0 ? Math.abs(p2.x - p1.x) + 22 : Math.abs(p2.x - p1.x) + 22}px`
     }}>
