@@ -1,0 +1,534 @@
+{
+    "actors": [
+        {
+            "id": "a_0",
+            "name": "Rishab",
+            "index": 0
+        },
+        {
+            "id": "a_1",
+            "name": "Banno",
+            "index": 1
+        },
+        {
+            "id": "a_2",
+            "name": "Saurabh",
+            "index": 2 
+        },
+        {
+            "id": "a_3",
+            "name": "Iram",
+            "index": 3 
+        },
+        {
+            "id": "a_4",
+            "name": "Sugil",
+            "index": 4 
+        }
+    ],
+    "steps":[
+        {
+            "id": "0_a_0_a_1",
+            "index": 0,
+            "from": "a_0" ,
+            "to": "a_1",
+            "message": "discuss the api design",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_1_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_1_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "2_a_1_a_3",
+            "index": 1,
+            "from": "a_1",
+            "to": "a_3",
+            "message": "discuss the UI designs and componenets needed",
+            "emotion": "😳",
+            "comments": [
+                {
+                    "id": "c_2_1",
+                    "text": "some comment comes here",
+                    "user": "rishab@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_2_2",
+                    "text": "some other comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "3_a_2_a_1",
+            "index": 2,
+            "from": "a_2",
+            "to": "a_1",
+            "message": "share AWS credentials",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "3_a_2_a_1",
+            "index": 3,
+            "from": "a_4",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "4_a_1_a_0",
+            "index": 4,
+            "from": "a_1",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        }
+        ,{
+            "id": "5_a_1_a_0",
+            "index": 5,
+            "from": "a_1",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },{
+            "id": "6_a_1_a_0",
+            "index": 6,
+            "from": "a_1",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "7_a_1_a_3",
+            "index": 7,
+            "from": "a_1",
+            "to": "a_3",
+            "message": "discuss the UI designs and componenets needed",
+            "emotion": "😳",
+            "comments": [
+                {
+                    "id": "c_2_1",
+                    "text": "some comment comes here",
+                    "user": "rishab@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_2_2",
+                    "text": "some other comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "8_a_2_a_1",
+            "index": 8,
+            "from": "a_2",
+            "to": "a_1",
+            "message": "share AWS credentials",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "9_a_2_a_1",
+            "index": 9,
+            "from": "a_4",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "10_a_1_a_0",
+            "index": 10,
+            "from": "a_1",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        }
+        ,{
+            "id": "11_a_1_a_0",
+            "index": 11,
+            "from": "a_1",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },{
+            "id": "12_a_1_a_0",
+            "index": 12,
+            "from": "a_1",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "13_a_0_a_1",
+            "index": 13,
+            "from": "a_0" ,
+            "to": "a_1",
+            "message": "discuss the api design",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_1_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_1_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "14_a_1_a_3",
+            "index": 14,
+            "from": "a_1",
+            "to": "a_3",
+            "message": "discuss the UI designs and componenets needed",
+            "emotion": "😳",
+            "comments": [
+                {
+                    "id": "c_2_1",
+                    "text": "some comment comes here",
+                    "user": "rishab@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_2_2",
+                    "text": "some other comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "15_a_2_a_1",
+            "index": 15,
+            "from": "a_2",
+            "to": "a_1",
+            "message": "share AWS credentials",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "16_a_2_a_1",
+            "index": 16,
+            "from": "a_4",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "17_a_1_a_0",
+            "index": 17,
+            "from": "a_1",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        }
+        ,{
+            "id": "18_a_1_a_0",
+            "index": 18,
+            "from": "a_1",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },{
+            "id": "19_a_1_a_0",
+            "index": 19,
+            "from": "a_1",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "20_a_1_a_3",
+            "index": 20,
+            "from": "a_1",
+            "to": "a_3",
+            "message": "discuss the UI designs and componenets needed",
+            "emotion": "😳",
+            "comments": [
+                {
+                    "id": "c_2_1",
+                    "text": "some comment comes here",
+                    "user": "rishab@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_2_2",
+                    "text": "some other comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "21_a_2_a_1",
+            "index": 21,
+            "from": "a_2",
+            "to": "a_1",
+            "message": "share AWS credentials",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "id": "22_a_2_a_1",
+            "index": 22,
+            "from": "a_4",
+            "to": "a_0",
+            "message": "Gop to darjeeling",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_3_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_3_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+       }
+    ]
+}

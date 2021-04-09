@@ -1,0 +1,11 @@
+#canvas{
+    background: lightslategray;
+    height: 50vh;
+    width: 100vw;
+}
+
+.action-btn{
+    position: absolute;
+    left: 10%;
+    top: 11%;
+}

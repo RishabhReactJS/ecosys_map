@@ -1,0 +1,37 @@
+.thread-container{
+    top: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.vl {
+    border-left: 2px solid #8390FA;
+    height: 50px;
+  }
+  
+  .thread-add-btn{
+      border-radius: 999px;
+      height: 22px;
+      width: 22px;
+      font-size: 16px;
+      line-height: 1;
+      background:#F9E9EC;
+      display: block;
+      color: #1D2F6F;
+      font-weight: 800;
+      border:none;
+      opacity: 0.2;
+      transition-property: opacity;
+      transition-duration: 0.3s;
+  }
+
+  .thread-add-btn:hover{
+      opacity: 1;
+      border:none;
+  }
+
+  .active{
+    opacity: 0.2;
+    border:none;
+}

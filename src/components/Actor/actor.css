@@ -1,0 +1,28 @@
+.actor-txt{
+    width: fit-content;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    text-align: center;
+    background: #FAC748;
+    color:#1D2F6F;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    padding: 1em;
+    top: 64px;
+    /* left: 50px; */
+    position: sticky;
+    border-radius: 999px;
+    line-height: 1;
+    border:none;
+    z-index: 100;
+}
+
+.actor-txt:focus{
+    outline: none;
+}
+
+.autor-container{
+    scroll-snap-align: center;
+}
