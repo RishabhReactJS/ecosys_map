@@ -20,7 +20,7 @@ export default function AddStep(props) {
                     <label for="story" className="label">Message</label>
                     <div className="value">
                         <textarea id="story" name="story" className="textbox">
-                            It was a dark and stormy night...
+
                         </textarea>
                     </div>
                 </div>
