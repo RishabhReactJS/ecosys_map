@@ -5,6 +5,7 @@ import data from "./utils/data.json";
 import React, { useState, useEffect } from 'react'
 import { Arrow } from "./components/Arrow/Arrow";
 import './components/Threads/thread.css';
+import AddStep from "./components/AddStep/AddStep"
 
 function App() {
   const [actors, setactors] = useState(data.actors);
@@ -24,6 +25,7 @@ function App() {
   }
   return (
     <div className="App">
+      <AddStep />
       <div className={"header"}></div>
       <ul className="actors">
         {actors.map((actor) => (

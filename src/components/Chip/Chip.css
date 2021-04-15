@@ -1,0 +1,18 @@
+
+input[type=radio] {
+    display: none;
+}
+input[type=radio]:checked ~ label {
+    background-color: #FAC748;
+    border: 1px solid #FAC748;
+  }
+
+.radio-chip{
+    padding: 8px 16px;
+    border: 1px solid #bdbdbd;
+    border-radius: 999px;
+    color:#1D2F6F;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+}
