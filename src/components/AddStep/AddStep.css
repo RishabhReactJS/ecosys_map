@@ -1,4 +1,4 @@
-.yo{
+.step-form{
     z-index: 99999;
     position: fixed;
     bottom: 32px;
@@ -46,5 +46,10 @@
     font-size: 1em;
     line-height: 1.5;
     padding: 16px;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
     resize: none;
 }

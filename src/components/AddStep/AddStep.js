@@ -7,7 +7,7 @@ export default function AddStep(props) {
     const [actors, setactors] = useState(data.actors);
     return (
         <form>
-            <div className="yo">
+            <div className="step-form">
                 <div className="field">
                     <div className="label">
                         To
@@ -19,9 +19,7 @@ export default function AddStep(props) {
                 <div className="field">
                     <label for="story" className="label">Message</label>
                     <div className="value">
-                        <textarea id="story" name="story" className="textbox">
-
-                        </textarea>
+                        <textarea id="story" name="story" className="textbox" />
                     </div>
                 </div>
             </div>
