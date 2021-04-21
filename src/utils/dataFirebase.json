@@ -1,0 +1,55 @@
+{
+    "actors": [
+        {
+            "name": "Citizen"
+        },
+        {
+            "name": "Playstore"
+        },
+        {
+            "name": "hospital"
+        }
+    ],
+    "steps": [
+        {
+            "from": "",
+            "to": "",
+            "message": "Open Play Store",
+            "emotion": "😡",
+            "comments": [
+                {
+                    "id": "c_1_1",
+                    "text": "some comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_1_2",
+                    "text": "some other comment comes here",
+                    "user": "banno@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        },
+        {
+            "from": "",
+            "to": "",
+            "message": "Search and install Aarogya Setu App",
+            "emotion": "😳",
+            "comments": [
+                {
+                    "id": "c_2_1",
+                    "text": "some comment comes here",
+                    "user": "rishab@finicky.design",
+                    "ts": "1617812226"
+                },
+                {
+                    "id": "c_2_2",
+                    "text": "some other comment comes here",
+                    "user": "saurabh@finicky.design",
+                    "ts": "1617812248"
+                }
+            ]
+        }
+    ]
+}

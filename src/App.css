@@ -3,9 +3,8 @@ body{
 }
 .App {
   text-align: center;
-  position: relative;
-  overflow: auto;
-  overflow: auto;
+  /* position: relative; */
+  /* overflow: auto; */
   height: 100vh;
   width: 100vw;
 }
@@ -49,7 +48,7 @@ body{
 .actors{
   display: flex;
   direction: ltr;
-  gap:120px;
+  gap:88px;
   scroll-snap-type: x mandatory;
 }
 
@@ -58,8 +57,12 @@ li{
 }
 
 .new_actor{
-  opacity: 0.5;
+  cursor: pointer;
 }
+
+.new_actor:hover{
+  opacity: 1;
+} 
 
 
 .arrowGraphic{
@@ -77,12 +80,75 @@ li{
   width: 100vw;
   height: 130px;
   position: fixed;
+  top: 0;
 }
 
 .arrow-message{
   color: white;
+  margin: 0;
 }
 
 .arrow-emoji{
   font-size: 24px;
+  margin: 0;
+}
+
+.add-step-btn{
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.svg-container{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap:0px;
+}
+
+.ordering{
+  position: relative;
+  display: flex;
+  width: auto;
+  gap: 8px;
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(42px);
+}
+
+.ordering:hover{
+  opacity: 1;
+  z-index: 999;
+}
+
+.ordering > button{
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-size: 16px;
+  padding: 0;
+}
+
+
+.add-step-btn{
+  width: fit-content;
+  height: fit-content;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  text-align: center;
+  background: #FAC748;
+  color:#1D2F6F;
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  padding: 1em;
+  border-radius: 999px;
+  line-height: 1;
+  border:none;
 }

@@ -3,8 +3,8 @@ import './Chip.css';
 
 export default function Chip(props) {
     return (<div className="chip">
-        <input type="radio" id={props.id}
+        <input disabled={props?.disabled === props.id} onChange={props.handleOnChnage} type="radio" id={`${props.name}_${props.id}`}
             name={props.name} value={props.id} />
-        <label for={props.id} className="radio-chip">{props.label}</label>
+        <label for={`${props.name}_${props.id}`} className={`${props.type === "txt" ? "radio-chip" : "radio-emo-chip"} ${props?.disabled === props.id ? 'disabled' : 'visible'}`}>{props.label}</label>
     </div>)
 }

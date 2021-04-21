@@ -1,4 +1,4 @@
-.step-form{
+/* .step-form{
     z-index: 99999;
     position: fixed;
     bottom: 32px;
@@ -11,7 +11,24 @@
     gap:16px;
     border-radius: 12px;
     width: 480px;
-  }
+  } */
+
+  .step-form {
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:16px;
+    position: fixed;
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    width: 608px;
+    top: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .field{
     display: flex;
@@ -53,3 +70,27 @@
     box-shadow: none;
     resize: none;
 }
+
+.emoji-picker{
+    height: 200px;
+    overflow: scroll;
+}
+
+.emoji-chip >img{
+    height: 2em;
+    width: 2em;
+}
+
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 9998; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    backdrop-filter: blur(4px);
+
+  }
