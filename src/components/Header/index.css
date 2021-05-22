@@ -1,0 +1,21 @@
+.home-component {
+    padding: 1rem;
+    color: white;
+}
+    .home-heading {
+      font-size: large;
+      font-weight: bold;
+    }
+  
+    .left-container {
+      right: 1rem;
+      position: absolute;
+    }
+    .home-section1 {
+      padding-top: 2rem;
+    }
+  
+    .logout-button {
+      border-radius: 5px;
+      padding: 5px;
+    }

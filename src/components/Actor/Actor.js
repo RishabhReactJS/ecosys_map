@@ -1,24 +1,36 @@
-import React, { useState } from 'react'
-import './actor.css';
+import React, { useState } from "react";
+import "./actor.css";
 
 export default function Actor(props) {
+  const [actorName, setactorName] = useState(props.text);
 
-    const [actorName, setactorName] = useState(props.text)
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setactorName("")
-        props.updateActorAPI(actorName, props?.actor);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // e.stopPropagation();
+    if (actorName.length > 0 && actorName != props.text) {
+      setactorName("");
+      props.updateActorAPI(actorName, props?.actor);
     }
+  };
 
-    return (
+  const handleOnBlur = (e) => {
+    e.preventDefault();
+    if (actorName.length > 0 && actorName != props.text) onSubmit(e);
+  };
 
-        <div className="autor-container">
-            <form onSubmit={onSubmit}>
-                <input placeholder='+ Add Actor' onChange={e => setactorName(e.target.value)} type="text" value={actorName} className="actor-txt" />
-                {props.children}
-            </form>
-        </div>
-    )
+  return (
+    <div className="autor-container">
+      <form onSubmit={onSubmit}>
+        <input
+          onBlur={handleOnBlur}
+          placeholder="+ Add Actor"
+          onChange={(e) => setactorName(e.target.value)}
+          type="text"
+          value={actorName}
+          className="actor-txt"
+        />
+        {props.children}
+      </form>
+    </div>
+  );
 }

@@ -21,15 +21,19 @@ export function Arrow(props) {
   }, [])
   const getWidth = () => p2.x - p1.x > 0 ? Math.abs(p2.x - p1.x) + 22 : Math.abs(p2.x - p1.x) + 22
   return (
-    <div className="svg-container" style={{
+    <div draggable={false} onDragOver={props.handleDragOver} data-id={props.stepDetail.id} className="svg-container" style={{
       "position": "absolute",
       "top": `${p1.y - 18 + window.scrollY}px`,
       "left": `${p2.x - p1.x > 0 ? p1.x - 2 + window.scrollX : p2.x - 4 + window.scrollX}px`,
       "width": `${p2.x - p1.x > 0 ? Math.abs(p2.x - p1.x) + 22 : Math.abs(p2.x - p1.x) + 22}px`
     }}>
-      <div className="ordering">
+      {/* <div className="ordering">
         <button>🔼</button>
         <button>🔽</button>
+      </div> */}
+      <div className="arrow-edit" >
+      <button onClick={(e) => props.editStep(props.stepDetail, e)}>Edit</button>
+      <button onClick={(e) => props.deleteStep(props.stepDetail, e)}>Delete</button>
       </div>
       <p className="arrow-message">{props?.message}</p>
       <Svg reverse={p2.x - p1.x < 0} length={Math.abs(p2.x - p1.x) + 18} arrowWidth={getWidth()} />

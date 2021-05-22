@@ -1,0 +1,38 @@
+.login-component {
+}
+    .login-form {
+      width: 20rem;
+      height: 12rem;
+      padding: 20px;
+  
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid blanchedalmond;
+      border-radius: 5px;
+      margin: -70px 0 0 -170px;
+      background: white;
+    }
+    .input-container {
+      display: block;
+      background: transparent;
+      text-align: start;
+    }
+  
+    .input-box {
+      display: block;
+      text-align: center;
+      margin: auto;
+      padding: 7px;
+      margin-top: 1rem;
+      border: 1px solid blanchedalmond;
+    }
+  
+    .login-button {
+      padding: 10px;
+      margin-top: 1rem;
+      margin-right: 1rem;
+      border: 1px solid blanchedalmond;
+      border-radius: 5px;
+      background: white;
+    }

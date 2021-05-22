@@ -50,6 +50,7 @@ body{
   direction: ltr;
   gap:88px;
   scroll-snap-type: x mandatory;
+  padding-bottom: 10rem;
 }
 
 li{
@@ -83,9 +84,20 @@ li{
   top: 0;
 }
 
+.margin-left {
+  margin-left: 1rem;
+}
+
 .arrow-message{
   color: white;
   margin: 0;
+  padding: 0 20px;
+}
+.arrow-edit{
+width: fit-content;
+right: 30px;
+top: 0;
+position: absolute;
 }
 
 .arrow-emoji{
@@ -151,4 +163,10 @@ input:focus::placeholder {
   border-radius: 999px;
   line-height: 1;
   border:none;
+}
+.arrow-list-itme{
+  width: 100vw;
+  background-color: aliceblue;
+  color: aquamarine;
+  height: fit-content;
 }
