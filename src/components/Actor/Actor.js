@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./actor.css";
+import '../Threads/thread.css';
 
 export default function Actor(props) {
   const [actorName, setactorName] = useState(props.text);
@@ -22,6 +23,12 @@ export default function Actor(props) {
     <div className="autor-container">
       <form onSubmit={onSubmit}>
         <input
+          draggable={true}
+          data-id={props?.actor?.id}
+          data-index={props.position}
+          onDragOver={props.onDragOver}
+          onDragStart={props.onDragStart}
+          onDragEnd={props.onDragEnd}
           onBlur={handleOnBlur}
           placeholder="+ Add Actor"
           onChange={(e) => setactorName(e.target.value)}

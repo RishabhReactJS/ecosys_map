@@ -48,7 +48,7 @@ body{
 .actors{
   display: flex;
   direction: ltr;
-  gap:88px;
+  gap:25px;
   scroll-snap-type: x mandatory;
   padding-bottom: 10rem;
 }
@@ -93,6 +93,13 @@ li{
   margin: 0;
   padding: 0 20px;
 }
+.draggable-area{
+  color: #111b41;
+  cursor: default;
+  background: azure;
+  width: 100%;
+  z-index: 101;
+}
 .arrow-edit{
 width: fit-content;
 right: 30px;
@@ -120,6 +127,8 @@ input:focus::placeholder {
   align-items: center;
   justify-content: center;
   gap:0px;
+  cursor: move;
+  z-index: 101;
 }
 
 .ordering{

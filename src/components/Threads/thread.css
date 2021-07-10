@@ -9,6 +9,14 @@
     border-left: 2px solid hsla(233, 92%, 75%, 0.48);
     height: 96px;
   }
+.Dropable-actor {
+    border-left: 100px solid rgb(0 0 0 / 0%);
+    height: 100vh;
+  }
+
+  .Dropable-list{
+      z-index: 100;
+  }
   
   .thread-add-btn{
       border-radius: 999px;

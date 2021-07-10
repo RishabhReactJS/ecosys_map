@@ -1,0 +1,14 @@
+.home-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 9rem;
+}
+.flow-block{
+    height: 12rem;
+    width: 12rem;
+    color: aqua;
+    background: #11945714;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}

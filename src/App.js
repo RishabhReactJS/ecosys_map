@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import './App.css';
 import fire from './utils/firebase';
 import Login from './components/login/login';
+import Home from './components/Home/Home';
 import Dashboard from './Dashboard';
 import { authlistner } from "./utils/firebase";
 

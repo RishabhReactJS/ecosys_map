@@ -5,15 +5,15 @@ import data from "./utils/data.json";
 import dataFirebase from "./utils/dataFirebase.json";
 import React, { useState, useEffect } from 'react'
 import { Arrow } from "./components/Arrow/Arrow";
-import './components/Threads/thread.css';
 import AddStep from "./components/AddStep/AddStep"
-import firebase, { getAPI, updateAPI, addAPI, deleteAPI } from "./utils/firebase";
+import firebase, { setTest, getAPI, updateAPI, addAPI, deleteAPI } from "./utils/firebase";
+import './components/Threads/thread.css';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 import Header from './components/Header/Header'
 
 function Dashboard() {
-  const [actors, setactors] = useState(data.actors);
-  const [steps, setsteps] = useState(data.steps);
+  const [actors, setactors] = useState();
+  const [steps, setsteps] = useState();
   const [firebaseSteps, setfirebaseSteps] = useState([]);
   const [rendered, setrendered] = useState(false)
   const [firebaseActors, setfirebaseActors] = useState([]);
@@ -31,6 +31,7 @@ function Dashboard() {
   };
 
   useEffect(async () => {
+    setTest()
     getAllActorAPI();
     getAllStepsAPI();
     console.log('in useEffect getAllActorAPI >>>')
@@ -125,30 +126,21 @@ function Dashboard() {
   }
 
   const handleDragStart = (e) => {
-    console.log("in handleDragStart >>>> ", e.currentTarget, e.dataTransfer, e);
-    if(e.currentTarget.dataset && e.currentTarget.dataset.id)
-      dragged = e.currentTarget?.dataset?.id;
-    // e.dataTransfer.effectAllowed = 'move';
-    // e.dataTransfer.setData('text/html', dragged);
+    if(e.currentTarget?.dataset?.index)
+      dragged = e.currentTarget?.dataset;
   };
-  const handleDragEnd = (e) => {
-    console.log("in handleDragEnd >>>> ", dragged, over);
-    // var from = Number(dragged.dataset.id);
-    // var to = Number(over.dataset.id);
-    // if(from < to) to--;
-    // data.splice(to, 0, data.splice(from, 1)[0]);
+  const handleDragEnd = async (e) => {
+    if(dragged.index !== over){
+      console.log('need to update position from ', dragged, ' to ', over);
+      // await updateAPI('steps', dragged.id, { over })
+    }
   };
 
   const handleDragOver = (e) => {
-    console.log('in handleDragOver >>>>> ', e.target, e)
+    console.log('in handleDragOver >>>>> ', e.target?.dataset)
     e.preventDefault();
     e.stopPropagation();
-    // e.nativeEvent.stopImmediatePropagation();
-    // dragged.style.display = "none";
-    // if(e.target.className === 'placeholder') return;
-    if(e.target.dataset && e.target.dataset.id)
-      over = e.target?.dataset?.id;
-    // e.target.parentNode.insertBefore(placeholder, e.target);
+      over = e.target?.dataset?.index;
   }
 
   const CreateArrow = () => {
@@ -163,7 +155,9 @@ function Dashboard() {
       // onStart={handleDragStart}
       // onDrag={handleDragOver}
       // onStop={handleDragEnd}>
-      <li draggable={true} onDragStart={handleDragStart} onDragEnd={handleDragEnd} className={"arrow-list-itme"} key={step.id} id={step.id} data-id={step.id}> <Arrow handleDragOver={handleDragOver} deleteStep={handleDeleteStep} editStep={handleEditStep} stepDetail={step} index={index} message={step.message} emotion={step.emotion} start={index + "_" + step.from} end={index + "_" + step.to} deltaActor={1} /></li>
+      // <div onDragOver={handleDragOver} draggable={true} onDragStart={handleDragStart} onDragEnd={handleDragEnd} className={"arrow-list-itme"} key={step.id} id={step.id} data-id={step.id}> 
+      <Arrow onDragOver={handleDragOver} onDragStart={handleDragStart} onDragEnd={handleDragEnd} deleteStep={handleDeleteStep} editStep={handleEditStep} stepDetail={step} index={index} message={step.message} emotion={step.emotion} start={index + "_" + step.from} end={index + "_" + step.to} deltaActor={1} />
+      // </div>
       // </Draggable>
     )
   }
@@ -175,14 +169,20 @@ function Dashboard() {
       <div className={"header"}> <Header /> </div>
       <ul className="actors">
         {firebaseActors.map((actor, index) => (
-          <li draggable="true"
-          onDragEnd={handleDragEnd}
-          onDragStart={handleDragStart} data-id={actor.id} id={actor.id} key={actor.id} className="">
-            <Actor actor={actor} updateActorAPI={updateActorAPI} text={actor.name}>
-              {firebaseSteps?.map((step, sIndex) => <Threads data-id={step.id} step={step} actor={actor.id} id={`${sIndex}_${actor.id}`} active={true} />)}
-              <Threads hadleAddStep={hadleAddStepButton} actorId={actor.id} id={`${steps.length + 1}_${actor.id}`} />
+          <>
+          <li className="Dropable-list">
+                  <div draggable={false} data-index={index} onDragOver={handleDragOver} className="Dropable-actor">
+            </div>
+          </li>
+          <li data-id={actor.id} id={actor.id} key={actor.id} className="">
+            <Actor 
+              onDragEnd={handleDragEnd} 
+              onDragStart={handleDragStart} position={index} actor={actor} updateActorAPI={updateActorAPI} text={actor.name}>
+              {firebaseSteps?.map((step, sIndex) => <Threads onDragOver={handleDragOver} data-id={step.id} step={step} actor={actor.id} id={`${sIndex}_${actor.id}`} active={true} />)}
+              <Threads hadleAddStep={hadleAddStepButton} actorId={actor.id} id={`${firebaseSteps.length}_${actor.id}`} />
             </Actor>
           </li>
+          </>
         ))}
         <li id="new_actor" key="new_actor" className="new_actor">
           <Actor updateActorAPI={addActorAPI} text="" >
@@ -191,9 +191,9 @@ function Dashboard() {
           </Actor>
         </li>
       </ul>
-      <ul onDragOver={handleDragOver}>
+      {/* <ul onDragOver={handleDragOver}> */}
       {rendered && <CreateArrow />}
-      </ul>
+      {/* </ul> */}
       <button className="add-step-btn" onClick={openStepModal}>+ Add Step</button>
     </div>
   )
