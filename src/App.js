@@ -1,23 +1,43 @@
-import React, { Component, useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import fire from './utils/firebase';
+// import fire from './utils/firebase';
 import Login from './components/login/login';
-import Home from './components/Home/Home';
+// import LoginOld from './components/login/loginOld';
+// import Home from './components/Home/Home';
 import Dashboard from './Dashboard';
-import { authlistner } from "./utils/firebase";
+// import { authlistner } from "./utils/firebase";
+import {
+  Routes,
+  Route,
+} from 'react-router-dom';
+// import Header from './components/Header/Header';
+import { AuthProvider } from './context/AuthContext';
+import { RequireAuth } from './utils/auth';
 
 const App = () => {
-  const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    console.log('in useEffect >>>');
-    authlistner()
-    .then(res => setUser(res))
-    .catch(err => setUser())
-  }, []);
+  // const [user, setUser] = useState(null);
+
+  // useEffect(() => {
+  //   console.log('in useEffect >>>');
+  //   authlistner()
+  //     .then(res => setUser(res))
+  //     .catch(err => setUser())
+  // });
 
 
-  return <div>{user ? <Dashboard /> : <Login />}</div>;
+  return <AuthProvider>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/dashboard" element={
+        <RequireAuth>
+          <Dashboard />
+        </RequireAuth>} />
+    </Routes>
+  </AuthProvider>;
+
+
+  // return <div>{user ? <Dashboard /> : <Login />}</div>;
 };
 
 export default App;

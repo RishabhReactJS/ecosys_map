@@ -154,8 +154,8 @@ export const handleSingup = (event, email, password) => {
     .catch(console.log);
 };
 
-export const handleLogin = (event, email, password) => {
-  event.preventDefault();
+export const handleLogin = ({email, password}) => {
+  return new Promise((resolve, reject) => {
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
@@ -164,13 +164,15 @@ export const handleLogin = (event, email, password) => {
       console.log('in handleLogin >>> ', res.user)
       localStorage.setItem('email', res.user.email);
       localStorage.setItem('userId', res.user.uid);
+      resolve(res.user);
     })
     .catch(err => {
-      alert(err);
+      reject(err);
     });
+  });
 };
 
-export const handelLogout = event => {
+export const handelLogout = () => {
   firebase.auth().signOut();
 };
 
@@ -188,4 +190,15 @@ export const authlistner = () => {
     }
   });
 });
+}
+
+export const handelDeleteAll = (collectionName, except) => {
+  const allSteps = getAPI(collectionName);
+  console.log('in handelDeleteAll >> ', allSteps)
+  debugger;
+  allSteps.foreach(doc => {
+    debugger;
+    if(doc.id !== except)
+      doc.ref.delete()
+  })
 }
