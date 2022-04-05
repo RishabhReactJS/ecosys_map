@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { handleSingup, handleLogin, handelLogout } from '../utils/firebase';
 
 const AuthContextType = {
@@ -24,6 +24,17 @@ export function AuthProvider({ children }) {
         console.log(err)
       })
   };
+  let signup = (payload, callback) => {
+    handleSingup(payload)
+      .then(res => {
+        console.log('in signup >>>> ', res);
+        setUserId(res.uid);
+        setuserEmail(res.email);
+        callback();
+      }).catch(err => {
+        console.log(err)
+      })
+  };
 
   let signout = (callback) => {
     handelLogout();
@@ -32,7 +43,7 @@ export function AuthProvider({ children }) {
     setuserEmail(null);
   };
 
-  let value = { userId, userEmail, signin, signout };
+  let value = { userId, userEmail, signin, signout, signup };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

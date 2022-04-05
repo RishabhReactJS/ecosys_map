@@ -30,12 +30,12 @@ function Dashboard() {
     addAPI("actors", { name: "Testing", index: 4 })
   };
 
-  useEffect(async () => {
-    setTest()
+  useEffect( () => {
+    // setTest()
     getAllActorAPI();
     getAllStepsAPI();
-    console.log('in useEffect getAllActorAPI >>>')
-  }, [firebase])
+    console.log('in useEffect getAllActorAPI getAllStepsAPI>>>')
+  }, [])
 
   useEffect(() => {
     if (firebaseSteps.length > 0)

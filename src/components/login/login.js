@@ -55,7 +55,7 @@ export default function Login() {
 
   const handleSingup = event => {
     event.preventDefault();
-    auth.signin({ email, password }, () => {
+    auth.signup({ email, password }, () => {
       navigate(from, { replace: true });
     });
   }
@@ -101,5 +101,5 @@ export default function Login() {
       </div>
     );
   }
-  return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />
+  return <Navigate to="/home" replace state={{ path: location.pathname }} />
 }

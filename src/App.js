@@ -3,7 +3,7 @@ import './App.css';
 // import fire from './utils/firebase';
 import Login from './components/login/login';
 // import LoginOld from './components/login/loginOld';
-// import Home from './components/Home/Home';
+import Home from './components/Home/Home';
 import Dashboard from './Dashboard';
 // import { authlistner } from "./utils/firebase";
 import {
@@ -29,6 +29,10 @@ const App = () => {
   return <AuthProvider>
     <Routes>
       <Route path="/" element={<Login />} />
+      <Route path="/home" element={
+        <RequireAuth>
+          <Home />
+        </RequireAuth>} />
       <Route path="/dashboard" element={
         <RequireAuth>
           <Dashboard />

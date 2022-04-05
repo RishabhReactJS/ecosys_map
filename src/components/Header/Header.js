@@ -7,6 +7,11 @@ export default function Header() {
 
   const auth = useAuth();
 
+  const handleSingout = event => {
+    event.preventDefault();
+    auth.signout();
+  }
+
     return (
                 <div className="home-component">
       <header>
@@ -28,7 +33,7 @@ export default function Header() {
           <button className="margin-left logout-button" onClick={handelLogout}>
             Save
           </button>
-          <button className="margin-left logout-button" onClick={auth.signout}>
+          <button className="margin-left logout-button" onClick={handleSingout}>
             Logout
           </button>
           {/* We can keep a private edit concept like pega app */}

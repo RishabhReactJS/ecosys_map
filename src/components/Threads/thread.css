@@ -12,6 +12,7 @@
 .Dropable-actor {
     border-left: 100px solid rgb(0 0 0 / 0%);
     height: 100vh;
+    margin-top: 50px;
   }
 
   .Dropable-list{

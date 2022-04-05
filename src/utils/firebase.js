@@ -15,6 +15,25 @@ firebase.initializeApp(firebaseConfig);
 
 export default firebase;
 
+// export const setTest = async () => {
+//   const db = firebase.firestore();
+
+//   var citiesRef = await db.collection("cities");
+
+//   citiesRef.doc("SF").set({
+//     name: "San Francisco", state: "CA", country: "USA",
+//     capital: false, population: 860000,
+//     regions: ["west_coast", "norcal"]
+//   });
+//   citiesRef.doc("LA").set({
+//     name: "Los Angeles", state: "CA", country: "USA",
+//     capital: false, population: 3900000,
+//     regions: ["west_coast", "socal"]
+//   });
+
+
+// }
+
 export const getAPI = async (collectionName) => {
   const db = firebase.firestore();
   const data = await db
@@ -22,6 +41,38 @@ export const getAPI = async (collectionName) => {
     .orderBy("order", "asc")
     .get();
   return data.docs;
+};
+
+// querying flows collenction for users viewable and editable flows
+export const getAllUserFlows = async (userId) => {
+  const db = firebase.firestore();
+  const editableFlowsdata = await db
+    .collection('flows')
+    .where("Access.Editors", "array-contains", userId)
+    .get();
+  const viewablwFlowsdata = await db
+  .collection('flows')
+  .where("Access.Viewers", "array-contains", userId)
+  .get();
+  const data = viewablwFlowsdata.docs.concat(editableFlowsdata.docs)
+    return data.map( doc => doc.data())
+};
+
+export const getAllUserSubFlows = async (userId) => {
+  const db = firebase.firestore();
+  const userFlows = await db
+    .collection('users').doc(userId).collection('flows')
+    .get();
+
+    const userFlowsId = userFlows.docs.map( doc => doc.data())
+
+    console.log('in getAllUserSubFlows userFlowsId >>>>>> ', userFlowsId);
+    const editableFlowsdata = await db
+    .collection('flows').doc(userFlowsId)
+    // .where("doc", "in", userFlowsId)
+    .get();
+
+    return editableFlowsdata.docs.map( doc => doc.data())
 };
 
 export const addAPI = async (collectionName, body) => {
@@ -103,72 +154,87 @@ export const updateDocuments = async (
   // const latesDocs = await db.collection(collectionName).doc(id).get();
 };
 
-export const createUserAPI = (email, password) => {
+export const createFlow = (userId, flowName) => {
   return new Promise((resolve, reject) => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Signed in
-        var user = userCredential.user;
-        console.log('in createUserAPI  userCredential >>>>> ', userCredential)
-        resolve(userCredential)
-        // ...
+    const date = new Date();
+    const db = firebase.firestore();
+    var flowsRef = db.collection("flows");
+    flowsRef.add({
+      Access: {
+        Editors: [userId],
+        Viewers: [],
+      },
+      created_at: date,
+      name: flowName || "",
+      owner: userId,
+      updated_at: date,
+    })
+      .then((updatedDetails) => {
+        console.log('in createFlow ?? .> >>>> ', updatedDetails);
+        resolve(updatedDetails.id);
       })
       .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ..
-        console.error('in createUserAPI >>>error  ', error)
         reject(error)
       });
   });
 };
 
-
-export const exastingUser = (email, password) => {
-  return new Promise((resolve, reject) => {
-  firebase.auth().signInWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-    // Signed in
-    var user = userCredential.user;
-    console.log('in exastingUser >>> userCredential', userCredential, user)
-    resolve(userCredential)
-    // ...
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.error('in exastingUser >>> error', error)
-    reject(error)
+export const createUser = (user) => {
+  return new Promise(async (resolve, reject) => {
+    const db = firebase.firestore();
+    var usersRef = await db.collection("users");
+    usersRef.doc(user.uid).add({
+      email: user.email,
+      Name: user.email
+    })
+      .then((updatedDetails) => {
+        console.log('in createUser ?? .> >>>> ', updatedDetails);
+        resolve(user);
+      })
+      .catch((error) => {
+        reject(error)
+      });
   });
-  })
-
-}
-export const handleSingup = (event, email, password) => {
-  event.preventDefault();
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(res => console.log(res))
-    .catch(console.log);
 };
 
-export const handleLogin = ({email, password}) => {
+export const handleSingup = ({ email, password }) => {
   return new Promise((resolve, reject) => {
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(res => {
-      localStorage.clear();
-      console.log('in handleLogin >>> ', res.user)
-      localStorage.setItem('email', res.user.email);
-      localStorage.setItem('userId', res.user.uid);
-      resolve(res.user);
-    })
-    .catch(err => {
-      reject(err);
-    });
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        localStorage.clear();
+        console.log('in handleLogin >>> ', res.user)
+        localStorage.setItem('email', res.user.email);
+        localStorage.setItem('userId', res.user.uid);
+        createUser(res.user);
+      })
+      .then(res => {
+        console.log('in handleLogin after createUserAPI>>> ', res)
+        resolve(res);
+      })
+      .catch(err => {
+        reject(err);
+      })
+  })
+};
+
+
+export const handleLogin = ({ email, password }) => {
+  return new Promise((resolve, reject) => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(res => {
+        localStorage.clear();
+        console.log('in handleLogin >>> ', res.user)
+        localStorage.setItem('email', res.user.email);
+        localStorage.setItem('userId', res.user.uid);
+        resolve(res.user);
+      })
+      .catch(err => {
+        reject(err);
+      });
   });
 };
 
@@ -178,18 +244,18 @@ export const handelLogout = () => {
 
 export const authlistner = () => {
   return new Promise((resolve, reject) => {
-  firebase.auth().onAuthStateChanged(user => {
-    console.log('in authListner>>', user);
-    if (user) {
-      localStorage.setItem('email', user.email);
-      localStorage.setItem('userId', user.uid);
-      resolve(user.uid)
-    } else {
-      localStorage.clear()
-      reject();
-    }
+    firebase.auth().onAuthStateChanged(user => {
+      console.log('in authListner>>', user);
+      if (user) {
+        localStorage.setItem('email', user.email);
+        localStorage.setItem('userId', user.uid);
+        resolve(user.uid)
+      } else {
+        localStorage.clear()
+        reject();
+      }
+    });
   });
-});
 }
 
 export const handelDeleteAll = (collectionName, except) => {
@@ -198,7 +264,7 @@ export const handelDeleteAll = (collectionName, except) => {
   debugger;
   allSteps.foreach(doc => {
     debugger;
-    if(doc.id !== except)
+    if (doc.id !== except)
       doc.ref.delete()
   })
 }
