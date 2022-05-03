@@ -43,8 +43,17 @@ export const getAPI = async (collectionName) => {
   return data.docs;
 };
 
+export const getSubCollectionAPI = async (collectionName, flowId) => {
+  console.log('in getSubCollectionAPI', collectionName, flowId)
+  const db = firebase.firestore();
+  const dataRef = await db
+    .collection(`flows/${flowId}/${collectionName}`).get()
+    console.log("Document data:", dataRef.docs);
+  return dataRef.docs;
+};
+
 // querying flows collenction for users viewable and editable flows
-export const getAllUserFlows = async (userId) => {
+export const getUserFlows = async (userId) => {
   const db = firebase.firestore();
   const editableFlowsdata = await db
     .collection('flows')
@@ -55,10 +64,11 @@ export const getAllUserFlows = async (userId) => {
   .where("Access.Viewers", "array-contains", userId)
   .get();
   const data = viewablwFlowsdata.docs.concat(editableFlowsdata.docs)
-    return data.map( doc => doc.data())
+    return data.map( doc => ({...doc.data(), id: doc.id}))
 };
 
-export const getAllUserSubFlows = async (userId) => {
+// Future use when we will have flows subCollection inside users collection, geting user flow id's from subcollection
+export const getUserSubFlows = async (userId) => {
   const db = firebase.firestore();
   const userFlows = await db
     .collection('users').doc(userId).collection('flows')
@@ -66,18 +76,18 @@ export const getAllUserSubFlows = async (userId) => {
 
     const userFlowsId = userFlows.docs.map( doc => doc.data())
 
-    console.log('in getAllUserSubFlows userFlowsId >>>>>> ', userFlowsId);
-    const editableFlowsdata = await db
+    console.log('in getUserSubFlows userFlowsId >>>>>> ', userFlowsId);
+    const flowsData = await db
     .collection('flows').doc(userFlowsId)
     // .where("doc", "in", userFlowsId)
     .get();
 
-    return editableFlowsdata.docs.map( doc => doc.data())
+    return flowsData.docs.map( doc => doc.data())
 };
 
-export const addAPI = async (collectionName, body) => {
+export const addAPI = async (collectionName, flowId, body) => {
   const db = firebase.firestore();
-  const data = await db.collection(collectionName).add(body);
+  await db.collection(`flows/${flowId}/${collectionName}`).add(body);
   return true;
 };
 
@@ -85,7 +95,7 @@ export const updateAPI = async (collectionName, id, body) => {
   const db = firebase.firestore();
   const document = await db.collection(collectionName).doc(id).get();
   const reqObj = { ...document.data(), ...body };
-  const data = await db.collection(collectionName).doc(id).set(reqObj);
+  await db.collection(collectionName).doc(id).set(reqObj);
   return true;
 };
 
@@ -183,7 +193,7 @@ export const createUser = (user) => {
   return new Promise(async (resolve, reject) => {
     const db = firebase.firestore();
     var usersRef = await db.collection("users");
-    usersRef.doc(user.uid).add({
+    usersRef.doc(user.uid).set({
       email: user.email,
       Name: user.email
     })
@@ -267,4 +277,42 @@ export const handelDeleteAll = (collectionName, except) => {
     if (doc.id !== except)
       doc.ref.delete()
   })
+}
+
+export const provideAccess = (docId, access) =>{ //access can be edit or view
+  const db = firebase.firestore();
+  var washingtonRef = db.collection("flows").doc(docId);
+  const property = "Access" + access;
+// Atomically add a new region to the "regions" array field.
+washingtonRef.update({
+  property: firebase.firestore.FieldValue.arrayUnion("greater_virginia")
+});
+}
+
+export const removeAccess = (docId, access) => {//access can be edit or view
+  const db = firebase.firestore();
+  var flowsRef = db.collection("flows").doc(docId);
+  const property = "Access" + access;
+
+// Atomically add a new region to the "regions" array field.
+flowsRef.update({
+  property: firebase.firestore.FieldValue.arrayRemove("greater_virginia")
+});
+}
+
+export const incPosition = ( collectionName,docId, value) =>{ //value to inc the position by
+  const db = firebase.firestore();
+  var flowsRef = db.collection("flows").doc(docId);
+
+  flowsRef.update({
+      positon: firebase.firestore.FieldValue.increment(value)
+  });
+}
+export const decPosition = ( collectionName,docId, value) =>{ //value to inc the position by
+  const db = firebase.firestore();
+  var flowsRef = db.collection("flows").doc(docId);
+
+  flowsRef.update({
+      positon: firebase.firestore.FieldValue.decrement(value)
+  });
 }

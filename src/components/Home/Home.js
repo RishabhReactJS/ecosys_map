@@ -2,18 +2,20 @@ import React, {useState, useEffect} from 'react'
 import './home.css';
 import Header from '../Header/Header'
 import useAuth from '../../context/AuthContext';
-import {createFlow, getAllUserFlows, getAllUserSubFlows} from '../../utils/firebase';
+import {createFlow, getUserFlows, getUserSubFlows} from '../../utils/firebase';
 import {
     useNavigate,
     useLocation,
     Navigate,
   } from "react-router-dom";
+import {FlowsCard} from '../FlowsCard/FlowsCard';
 
 export default function Home() {
     const [flowName, setflowName] = useState("");
 const [isCreateFlow, setisCreateFlow] = useState(false);
     const auth = useAuth();
     const navigate = useNavigate();
+    const [userFlows, setuserFlows] = useState([]);
     
     const handleCreateFlow = (event) => {
         event.preventDefault();
@@ -25,28 +27,30 @@ const [isCreateFlow, setisCreateFlow] = useState(false);
     }
 
     useEffect(() => {
-        getAllUserFlows(auth.userId)
+        getUserFlows(auth.userId)
         .then(res => {
-            console.log('in getAllUserFlows >>> ', res);
+            console.log('in getUserFlows >>> ', res);
+            setuserFlows(res);
         })
-        .catch(err => console.log('in getAllUserFlows error >>> ', err))
+        .catch(err => console.log('in getUserFlows error >>> ', err))
     }, [])
 
-    useEffect(() => {
-        getAllUserSubFlows(auth.userId)
-        .then(res => {
-            console.log('in getAllUserSubFlows >>> ', res);
-        })
-        .catch(err => console.log('in getAllUserSubFlows error >>> ', err))
-    }, [])
+    // future use case for flows subCollection in users collection
+    // useEffect(() => {
+    //     getUserSubFlows(auth.userId)
+    //     .then(res => {
+    //         console.log('in getUserSubFlows >>> ', res);
+    //     })
+    //     .catch(err => console.log('in getUserSubFlows error >>> ', err))
+    // }, [])
 
     return (<div>
         <div className={"header"}> <Header /> </div>
         {isCreateFlow
         ?<div className="home-container">
-            <lable>Flow Name</lable>
+            <lable className="homeLable">Flow Name</lable>
             <input type="text" value={flowName} onChange={event => setflowName(event.target.value)} placeholder="Please insert the flow name"/>
-        <button className="flow-block" onClick={handleCreateFlow}>
+        <button onClick={handleCreateFlow}>
             Create
         </button>
     </div>
@@ -55,6 +59,7 @@ const [isCreateFlow, setisCreateFlow] = useState(false);
                 + Create Flow
             </div>
         </div>}
+        {userFlows.length > 0 ? <FlowsCard userFlows={userFlows} navigate={navigate} /> : null}
     </div>
     )
 }

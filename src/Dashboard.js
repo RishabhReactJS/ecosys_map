@@ -6,10 +6,11 @@ import dataFirebase from "./utils/dataFirebase.json";
 import React, { useState, useEffect } from 'react'
 import { Arrow } from "./components/Arrow/Arrow";
 import AddStep from "./components/AddStep/AddStep"
-import firebase, { setTest, getAPI, updateAPI, addAPI, deleteAPI } from "./utils/firebase";
+import firebase, { setTest, getAPI, updateAPI, addAPI, deleteAPI, getSubCollectionAPI } from "./utils/firebase";
 import './components/Threads/thread.css';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 import Header from './components/Header/Header'
+import { useParams } from "react-router-dom";
 
 function Dashboard() {
   const [actors, setactors] = useState();
@@ -25,10 +26,8 @@ function Dashboard() {
   const [addStepId, setaddStepID] = useState()
   let dragged;
   let over;
-  
-  const handleAddActor = (event) => {
-    addAPI("actors", { name: "Testing", index: 4 })
-  };
+  const params = useParams();
+
 
   useEffect( () => {
     // setTest()
@@ -64,13 +63,17 @@ function Dashboard() {
 
 
   const getAllActorAPI = async () => {
-    const actorsData = await getAPI("actors")
-    console.log('in getAllActorAPI >>>> ', actorsData)
+    // const actorsAData = await getAPI("actors")
+    // console.log('in actorsAData >>>> ', actorsAData);
+    const actorsData = await getSubCollectionAPI("actors", params.flowId);
+    console.log('in getAllActorAPI >>>> ', actorsData);
     setfirebaseActors(actorsData.map(doc => { return { ...doc.data(), "id": doc.id } }));
   }
 
   const getAllStepsAPI = async () => {
-    const stepsData = await getAPI("steps")
+    // const stepsData = await getAPI("steps")
+    const stepsData = await getSubCollectionAPI("steps", params.flowId);
+    console.log('in stepsData >>>> ', stepsData)
     setfirebaseSteps(stepsData.map(doc => ({ ...doc.data(), "id": doc.id })))
   }
 
@@ -83,14 +86,14 @@ function Dashboard() {
   }
   const addActorAPI = async (newName, actor) => {
     // e.stopPropagation();
-    await addAPI('actors', { name: newName, order: firebaseActors.length })
+    await addAPI('actors', params.flowId, { name: newName, order: firebaseActors.length })
     setrendered(false)
     await getAllActorAPI();
     await getAllStepsAPI();
   }
 
   const createStep = async (from, to, message, emotion) => {
-    await addAPI('steps', { from, to, message, emotion, order: firebaseSteps.length })
+    await addAPI('steps', params.flowId, { from, to, message, emotion, order: firebaseSteps.length })
     setrendered(false)
     await getAllActorAPI();
     await getAllStepsAPI();

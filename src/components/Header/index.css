@@ -5,6 +5,8 @@
     .home-heading {
       font-size: large;
       font-weight: bold;
+      left: 34rem;
+      position: absolute;
     }
   
     .left-container {
@@ -19,3 +21,9 @@
       border-radius: 5px;
       padding: 5px;
     }
+.home-link{
+  left: 1rem;
+  position: absolute;
+  color: white;
+  text-decoration: none;
+}

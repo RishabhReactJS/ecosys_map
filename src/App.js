@@ -33,10 +33,22 @@ const App = () => {
         <RequireAuth>
           <Home />
         </RequireAuth>} />
-      <Route path="/dashboard" element={
+      {/* <Route path="/dashboard" element={
+        <RequireAuth>
+          <Dashboard />
+        </RequireAuth>} /> */}
+        <Route path="/dashboard/:flowId" element={
         <RequireAuth>
           <Dashboard />
         </RequireAuth>} />
+      <Route
+        path="*"
+        element={
+          <main style={{ padding: "1rem" }}>
+            <p>There's nothing here!</p>
+          </main>
+        }
+      />
     </Routes>
   </AuthProvider>;
 

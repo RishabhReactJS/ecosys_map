@@ -1,0 +1,39 @@
+{"page" : {
+    "id":  "asdguasg82379423",
+    "name": "Order online",
+    "owner": "rishabhj231",
+    "actors": ["actor_ID","actor_ID2","actor_ID6","actor_ID3","actor_ID4","actor_ID5"],// sequece on basis of this on reorder update position of actor_ID in this array;
+    "actors": {1:"actor_ID",2:"actor_ID2",3:"actor_ID6",4:"actor_ID3",5:"actor_ID4",6:"actor_ID5"}, //Firebase reorder object data on basis of key value pair does'nt mentain input order.
+    "steps": [1,2,3],
+    "access": ['rishabhj231','nilesh', 'vishal'],
+    "created_at": "",
+    "update_at": ""
+},
+
+"user" : {
+    "name": "rishabh jain",
+    "email": "rishabhj231#gmail.com",
+    "pages": ["p1", "p2", "p3"]
+},
+// use Transactions for update calls much safe in case of multiple user updating the data
+// Cloud Firestore guarantees serializable isolation of transactions. Transactions in Cloud Firestore are serialized and isolated by commit time.
+
+"actor" : {
+    "id": "gwaius6897wq",
+    "name": "google",
+    "position": 1,
+    "created_at": "",
+    "update_at": "",
+    "page_id": ""
+},
+
+"step": {
+    "to": "hsdy68a",
+    "from" : "sahjdkhsakj",
+    "message": "trest",
+    "position": 1,
+    "page_id": ""
+}
+}
+
+// look into oneToMany and ManyToMAny relation in MongoDB

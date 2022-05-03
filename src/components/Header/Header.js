@@ -2,6 +2,7 @@ import React from 'react'
 import {handelLogout, handelDeleteAll} from '../../utils/firebase'
 import './index.css'
 import useAuth from '../../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
 
@@ -15,6 +16,7 @@ export default function Header() {
     return (
                 <div className="home-component">
       <header>
+      <Link className="home-link" to="/home">Home</Link>
         <span className="home-heading">Sequential Diagram</span>
         <span className="left-container">
           <label className="margin-left">
