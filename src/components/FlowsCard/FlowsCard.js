@@ -6,24 +6,24 @@ export const FlowsCard = ({ userFlows, navigate }) => {
 
     const handleClick = (e) => {
         console.log('in handleClick >>> ', e.currentTarget.id);
-        navigate(  `../dashboard/${e.currentTarget.id}`, { replace: true })
+        navigate(`../dashboard/${e.currentTarget.id}`, { replace: true })
 
     }
     return (
-        <div>
-            <div className="card-container">
+        <div className="card-container">
+            <div className="flows-heading card">
+                <p>Flow name</p>
+                <p>Created At</p>
+                <p>Last Modified</p>
+            </div>
             {userFlows.map(flow => (
                 <div id={flow.id} onClick={handleClick} className="card">
                     {console.log('in map id >>', flow.id)}
-                    <div>Name</div>
-                    <div>{flow.name}</div>
-                    <div>Created on</div>
-                    <div>{flow.created_at.toDate().toDateString() +" "+ flow.created_at.toDate().toLocaleTimeString()}</div>
-                    <div>Last Updated on</div>
-                    <div>{flow.updated_at.toDate().toDateString() +" "+ flow.updated_at.toDate().toLocaleTimeString()}</div>
-                </div>    
+                    <p className="flow-name">{flow.name}</p>
+                    <p className="created-at">{flow.created_at.toDate().toLocaleString('en-in', { timeZone: 'IST' })}</p>
+                    <p className="updated-at">{flow.updated_at.toDate().toLocaleString('en-in', { timeZone: 'IST' })}</p>
+                </div>
             ))}
-            </div>
         </div>
     )
 }

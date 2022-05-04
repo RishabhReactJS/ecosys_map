@@ -1,5 +1,5 @@
 import React from 'react'
-import {handelLogout, handelDeleteAll} from '../../utils/firebase'
+import { handelLogout, handelDeleteAll } from '../../utils/firebase'
 import './index.css'
 import useAuth from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
@@ -13,10 +13,10 @@ export default function Header() {
     auth.signout();
   }
 
-    return (
-                <div className="home-component">
+  return (
+    <div className="home-component">
       <header>
-      <Link className="home-link" to="/home">Home</Link>
+        <Link className="home-link" to="/home">Home</Link>
         <span className="home-heading">Sequential Diagram</span>
         <span className="left-container">
           <label className="margin-left">
@@ -46,5 +46,5 @@ export default function Header() {
         <TaxTable customerTax={Tax} /> */}
       </section>
     </div>
-    )
+  )
 }

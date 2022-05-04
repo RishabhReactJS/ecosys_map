@@ -1,6 +1,7 @@
-body{
-  background: hsl(227, 59%, 16%);
+body {
+  background: #141414;
 }
+
 .App {
   text-align: center;
   /* position: relative; */
@@ -20,8 +21,7 @@ body{
   }
 }
 
-.App-
- {
+.App- {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -40,44 +40,45 @@ body{
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.actors{
+.actors {
   display: flex;
   direction: ltr;
-  gap:25px;
+  gap: 25px;
   scroll-snap-type: x mandatory;
   padding-bottom: 10rem;
 }
 
-li{
+li {
   list-style-type: none;
 }
 
-.new_actor{
+.new_actor {
   cursor: pointer;
 }
 
-.new_actor:hover{
+.new_actor:hover {
   opacity: 1;
-} 
-
-
-.arrowGraphic{
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    top:0;
-    left: 0;
 }
 
-.header{
+
+.arrowGraphic {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.header {
   z-index: 98;
-  background: rgb(29,47,111);
-  background: linear-gradient(180deg,hsl(227, 59%, 16%) 90%, rgba(0,212,255,0) 100%);
+  background: #141414;
+  /* background: linear-gradient(180deg, hsl(227, 59%, 16%) 90%, rgba(0, 212, 255, 0) 100%); */
   width: 100vw;
   height: 130px;
   position: fixed;
@@ -88,31 +89,33 @@ li{
   margin-left: 1rem;
 }
 
-.arrow-message{
+.arrow-message {
   color: white;
   margin: 0;
   padding: 0 20px;
 }
-.draggable-area{
+
+.draggable-area {
   color: #111b41;
   cursor: default;
   background: azure;
   width: 100%;
   z-index: 101;
 }
-.arrow-edit{
-width: fit-content;
-right: 30px;
-top: 0;
-position: absolute;
+
+.arrow-edit {
+  width: fit-content;
+  right: 30px;
+  top: 0;
+  position: absolute;
 }
 
-.arrow-emoji{
+.arrow-emoji {
   font-size: 24px;
   margin: 0;
 }
 
-.add-step-btn{
+.add-step-btn {
   position: fixed;
   bottom: 16px;
   right: 16px;
@@ -122,16 +125,16 @@ input:focus::placeholder {
   color: transparent;
 }
 
-.svg-container{
+.svg-container {
   display: grid;
   align-items: center;
   justify-content: center;
-  gap:0px;
+  gap: 0px;
   cursor: move;
   z-index: 101;
 }
 
-.ordering{
+.ordering {
   position: relative;
   display: flex;
   width: auto;
@@ -142,12 +145,12 @@ input:focus::placeholder {
   transform: translateY(42px);
 }
 
-.ordering:hover{
+.ordering:hover {
   opacity: 1;
   z-index: 999;
 }
 
-.ordering > button{
+.ordering>button {
   background: transparent;
   border: none;
   box-shadow: none;
@@ -156,7 +159,7 @@ input:focus::placeholder {
 }
 
 
-.add-step-btn{
+.add-step-btn {
   width: fit-content;
   height: fit-content;
   border-top-style: hidden;
@@ -164,16 +167,17 @@ input:focus::placeholder {
   border-left-style: hidden;
   text-align: center;
   background: #FAC748;
-  color:#1D2F6F;
+  color: #1D2F6F;
   font-size: 1em;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   padding: 1em;
   border-radius: 999px;
   line-height: 1;
-  border:none;
+  border: none;
 }
-.arrow-list-itme{
+
+.arrow-list-itme {
   width: 100vw;
   background-color: aliceblue;
   color: aquamarine;

@@ -1,17 +1,60 @@
-.home-container{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flows-content {
+    margin-top: 130px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.btn {
     display: flex;
     justify-content: center;
-    padding-top: 9rem;
-}
-.flow-block{
-    height: 12rem;
-    width: 12rem;
-    color: aqua;
-    background: #11945714;
     align-items: center;
-    justify-content: center;
-    display: flex;
+    padding: 4px 16px;
+    font-size: 14px;
+    font-weight: 400;
 }
-.homeLable{
+
+.flows-content {
+    max-width: 1080px;
+    margin: 130px auto;
+}
+
+.create-flow-form {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.create-flow-form>* {
+    align-self: stretch;
+}
+
+.create-label {
     color: white;
+    font-size: 16px;
+    font-weight: 800;
+    align-self: center;
+}
+
+
+.text-input {
+    width: 320px;
+}
+
+.title {
+    color: white;
+    line-height: 1;
+    margin: 0;
 }
