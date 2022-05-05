@@ -53,11 +53,12 @@ export const getSubCollectionAPI = async (collectionName, flowId) => {
   return dataRef.docs;
 };
 
+
 // querying flows collenction for users viewable and editable flows
 export const getUserFlows = async (userId) => {
   const db = firebase.firestore();
   const editableFlowsdata = await db
-    .collection('flows')
+    .collection('flows').orderBy("updated_at", "asc")
     .where("Access.Editors", "array-contains", userId)
     .get();
   const viewablwFlowsdata = await db

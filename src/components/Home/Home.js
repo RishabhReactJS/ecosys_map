@@ -26,13 +26,17 @@ export default function Home() {
             }).catch(err => console.log('in handleCreateFlow error', err))
     }
 
-    useEffect(() => {
+    const getFlows = () => {
         getUserFlows(auth.userId)
             .then(res => {
                 console.log('in getUserFlows >>> ', res);
                 setuserFlows(res);
             })
             .catch(err => console.log('in getUserFlows error >>> ', err))
+    }
+
+    useEffect(() => {
+        getFlows()
     }, [])
 
     // future use case for flows subCollection in users collection
@@ -61,7 +65,7 @@ export default function Home() {
                         : <button className="button create-flow" onClick={() => setisCreateFlow(true)}>Create flow</button>
                     }
                 </div>
-                {userFlows.length > 0 ? <FlowsCard userFlows={userFlows} navigate={navigate} /> : null}
+                {userFlows.length > 0 ? <FlowsCard getFlows={getFlows} userFlows={userFlows} navigate={navigate} /> : null}
             </div>
         </div>
     )
