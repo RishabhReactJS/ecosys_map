@@ -22,7 +22,7 @@ export default function Home() {
         createFlow(auth.userId, flowName)
             .then(res => {
                 console.log('flow Id >>', res)
-                navigate("../dashboard", { replace: true })
+                navigate(`../dashboard/${res}`, { replace: true })
             }).catch(err => console.log('in handleCreateFlow error', err))
     }
 
