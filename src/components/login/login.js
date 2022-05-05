@@ -71,7 +71,7 @@ export default function Login() {
     return (
       <div className="page">
         <div className="login-component">
-          <h2 className="title is-3">Login/Signup</h2>
+          <h1 className="title is-3">Login/Signup</h1>
           <form className="login-form" onChange={handelChenge}>
             <div className="login-inputs">
               <input

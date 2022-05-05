@@ -15,6 +15,7 @@
     display: flex;
     justify-content: space-between;
     padding: 16px;
+    align-items: center;
 }
 
 .btn {
@@ -37,18 +38,18 @@
     gap: 16px;
 }
 
-.create-flow-form>* {
-    align-self: stretch;
-}
+
 
 .create-label {
     color: white;
-    font-size: 16px;
-    font-weight: 800;
-    align-self: center;
 }
 
 
 .text-input {
     width: 320px;
+}
+
+.text-white {
+    color: white;
+    margin: 0 !important;
 }

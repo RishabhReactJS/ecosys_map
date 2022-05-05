@@ -49,12 +49,12 @@ export default function Home() {
             <div className="header"><Header /></div>
             <div className="flows-content">
                 <div className="toolbar">
-                    <h1 className="title">Dashboard</h1>
+                    <h1 className="title text-white">Dashboard</h1>
                     {isCreateFlow ?
                         <div className="create-flow-form">
-                            <label className="create-label" for="create-flow">Flow Name</label>
-                            <input id="create-flow" className="text-input" type="text" value={flowName} onChange={event => setflowName(event.target.value)} placeholder="Please insert the flow name" />
-                            <button className="btn create-flow" onClick={handleCreateFlow}>
+                            <label className="create-label subtitle text-white" for="create-flow">Flow Name</label>
+                            <input id="create-flow" className="text-input input" type="text" value={flowName} onChange={event => setflowName(event.target.value)} placeholder="Please insert the flow name" />
+                            <button className="button create-flow" onClick={handleCreateFlow}>
                                 Create Flow
                             </button>
                         </div>
