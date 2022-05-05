@@ -92,24 +92,24 @@ export const addAPI = async (collectionName, flowId, body) => {
   return true;
 };
 
-export const updateAPI = async (collectionName, id, body) => {
+export const updateAPI = async (collectionName, flowId, id, body) => {
   const db = firebase.firestore();
-  const document = await db.collection(collectionName).doc(id).get();
+  const document = await db.collection(`flows/${flowId}/${collectionName}`).doc(id).get();
   const reqObj = { ...document.data(), ...body };
-  await db.collection(collectionName).doc(id).set(reqObj);
+  await db.collection(`flows/${flowId}/${collectionName}`).doc(id).set(reqObj);
   return true;
 };
 
-export const deleteAPI = async (collectionName, details) => {
+export const deleteAPI = async (collectionName, flowId, details) => {
   const db = firebase.firestore();
 
   // Get a new write batch
   const batch = db.batch();
-  const documents = await getAPI(collectionName);
+  const documents = await getAPI(`flows/${flowId}/${collectionName}`);
 
   console.log("in deleteAPI >>> ", documents, documents.length);
 
-  const deleteDoc = db.collection(collectionName).doc(details.id);
+  const deleteDoc = db.collection(`flows/${flowId}/${collectionName}`).doc(details.id);
 
   batch.delete(deleteDoc);
 

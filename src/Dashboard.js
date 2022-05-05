@@ -55,7 +55,7 @@ function Dashboard() {
 
   const handleDeleteStep = async (stepDetail, e) => {
     e.stopPropagation();
-    deleteAPI('steps', stepDetail)
+    deleteAPI('steps', params.flowId, stepDetail)
     setrendered(false)
     await getAllActorAPI();
     await getAllStepsAPI();
@@ -99,7 +99,7 @@ function Dashboard() {
     await getAllStepsAPI();
   }
   const updateStep = async (id, from, to, message, emotion) => {
-    await updateAPI('steps', id, { from, to, message, emotion })
+    await updateAPI('steps', params.flowId, id, { from, to, message, emotion })
     setrendered(false)
     await getAllActorAPI();
     await getAllStepsAPI();
