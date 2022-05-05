@@ -47,8 +47,9 @@ export const getSubCollectionAPI = async (collectionName, flowId) => {
   console.log('in getSubCollectionAPI', collectionName, flowId)
   const db = firebase.firestore();
   const dataRef = await db
-    .collection(`flows/${flowId}/${collectionName}`).get()
-    console.log("Document data:", dataRef.docs);
+    .collection(`flows/${flowId}/${collectionName}`)
+    .orderBy("order", "asc").get()
+  console.log("Document data:", dataRef.docs);
   return dataRef.docs;
 };
 
@@ -60,11 +61,11 @@ export const getUserFlows = async (userId) => {
     .where("Access.Editors", "array-contains", userId)
     .get();
   const viewablwFlowsdata = await db
-  .collection('flows')
-  .where("Access.Viewers", "array-contains", userId)
-  .get();
+    .collection('flows')
+    .where("Access.Viewers", "array-contains", userId)
+    .get();
   const data = viewablwFlowsdata.docs.concat(editableFlowsdata.docs)
-    return data.map( doc => ({...doc.data(), id: doc.id}))
+  return data.map(doc => ({ ...doc.data(), id: doc.id }))
 };
 
 // Future use when we will have flows subCollection inside users collection, geting user flow id's from subcollection
@@ -74,15 +75,15 @@ export const getUserSubFlows = async (userId) => {
     .collection('users').doc(userId).collection('flows')
     .get();
 
-    const userFlowsId = userFlows.docs.map( doc => doc.data())
+  const userFlowsId = userFlows.docs.map(doc => doc.data())
 
-    console.log('in getUserSubFlows userFlowsId >>>>>> ', userFlowsId);
-    const flowsData = await db
+  console.log('in getUserSubFlows userFlowsId >>>>>> ', userFlowsId);
+  const flowsData = await db
     .collection('flows').doc(userFlowsId)
     // .where("doc", "in", userFlowsId)
     .get();
 
-    return flowsData.docs.map( doc => doc.data())
+  return flowsData.docs.map(doc => doc.data())
 };
 
 export const addAPI = async (collectionName, flowId, body) => {
@@ -279,14 +280,14 @@ export const handelDeleteAll = (collectionName, except) => {
   })
 }
 
-export const provideAccess = (docId, access) =>{ //access can be edit or view
+export const provideAccess = (docId, access) => { //access can be edit or view
   const db = firebase.firestore();
   var washingtonRef = db.collection("flows").doc(docId);
   const property = "Access" + access;
-// Atomically add a new region to the "regions" array field.
-washingtonRef.update({
-  property: firebase.firestore.FieldValue.arrayUnion("greater_virginia")
-});
+  // Atomically add a new region to the "regions" array field.
+  washingtonRef.update({
+    property: firebase.firestore.FieldValue.arrayUnion("greater_virginia")
+  });
 }
 
 export const removeAccess = (docId, access) => {//access can be edit or view
@@ -294,25 +295,25 @@ export const removeAccess = (docId, access) => {//access can be edit or view
   var flowsRef = db.collection("flows").doc(docId);
   const property = "Access" + access;
 
-// Atomically add a new region to the "regions" array field.
-flowsRef.update({
-  property: firebase.firestore.FieldValue.arrayRemove("greater_virginia")
-});
-}
-
-export const incPosition = ( collectionName,docId, value) =>{ //value to inc the position by
-  const db = firebase.firestore();
-  var flowsRef = db.collection("flows").doc(docId);
-
+  // Atomically add a new region to the "regions" array field.
   flowsRef.update({
-      positon: firebase.firestore.FieldValue.increment(value)
+    property: firebase.firestore.FieldValue.arrayRemove("greater_virginia")
   });
 }
-export const decPosition = ( collectionName,docId, value) =>{ //value to inc the position by
+
+export const incPosition = (collectionName, docId, value) => { //value to inc the position by
   const db = firebase.firestore();
   var flowsRef = db.collection("flows").doc(docId);
 
   flowsRef.update({
-      positon: firebase.firestore.FieldValue.decrement(value)
+    positon: firebase.firestore.FieldValue.increment(value)
+  });
+}
+export const decPosition = (collectionName, docId, value) => { //value to inc the position by
+  const db = firebase.firestore();
+  var flowsRef = db.collection("flows").doc(docId);
+
+  flowsRef.update({
+    positon: firebase.firestore.FieldValue.decrement(value)
   });
 }

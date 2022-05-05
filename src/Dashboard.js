@@ -67,18 +67,14 @@ function Dashboard() {
     // console.log('in actorsAData >>>> ', actorsAData);
     const actorsData = await getSubCollectionAPI("actors", params.flowId);
     console.log('in getAllActorAPI >>>> ', actorsData);
-    setfirebaseActors(actorsData.map(doc => { return { ...doc.data(), "id": doc.id } }).sort(function (a, b) {
-      return a.order - b.order;
-    }));
+    setfirebaseActors(actorsData.map(doc => { return { ...doc.data(), "id": doc.id } }));
   }
 
   const getAllStepsAPI = async () => {
     // const stepsData = await getAPI("steps")
     const stepsData = await getSubCollectionAPI("steps", params.flowId);
     console.log('in stepsData >>>> ', stepsData)
-    setfirebaseSteps(stepsData.map(doc => ({ ...doc.data(), "id": doc.id })).sort(function (a, b) {
-      return a.order - b.order;
-    }))
+    setfirebaseSteps(stepsData.map(doc => ({ ...doc.data(), "id": doc.id })))
   }
 
   const updateActorAPI = async (newName, actor) => {
