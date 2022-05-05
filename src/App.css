@@ -89,16 +89,22 @@ li {
 .draggable-area {
   color: #111b41;
   cursor: default;
-  background: rgba(0, 0, 0, 0.2);
   width: 100%;
   z-index: 101;
 }
 
 .arrow-edit {
-  width: fit-content;
-  right: 30px;
-  top: 0;
+  right: 16px;
+  bottom: 16px;
   position: absolute;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  background-color: rgba(32, 32, 32, 0.9);
+  padding: 4px 8px;
+  border: radius 2px;
+  border: 1px solid rgba(117, 117, 117, 0.4);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), 0px 2px 21px rgba(0, 0, 0, 0.2);
 }
 
 .arrow-emoji {
@@ -188,4 +194,31 @@ input:focus::placeholder {
   overflow: auto;
   width: 100vw;
   height: 100vh;
+}
+
+.actor-txt {
+  z-index: 999;
+}
+
+.actors-container {
+  width: max-content;
+  position: relative;
+}
+
+.arrow-draggable {
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.arrow-draggable:hover {
+  opacity: 0.05;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.svg-container .arrow-edit {
+  visibility: hidden;
+}
+
+.svg-container:hover .arrow-edit {
+  visibility: visible;
 }

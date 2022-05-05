@@ -28,18 +28,22 @@ export function Arrow(props) {
         <button>🔽</button>
       </div> */}
         <div className="arrow-edit" >
-          <button onClick={(e) => props.editStep(props.stepDetail, e)}>Edit</button>
-          <button onClick={(e) => props.deleteStep(props.stepDetail, e)}>Delete</button>
+          <span class="material-symbols-outlined arrow-icon" onClick={(e) => props.editStep(props.stepDetail, e)}>
+            edit
+          </span>
+          <span class="material-symbols-outlined arrow-icon" onClick={(e) => props.deleteStep(props.stepDetail, e)}>
+            delete
+          </span>
         </div>
         <p className="arrow-message">{props?.message}</p>
         <Svg reverse={p2.x - p1.x < 0} length={Math.abs(p2.x - p1.x) + 18} arrowWidth={getWidth()} />
         <p className="arrow-emoji">{props?.emotion}</p>
       </div>
-      <div draggable={false} data-index={props.index} onDragEnter={props.onDragOver} onDragOver={props.onDragOver} className="draggable-area" style={{
-        "position": "relative",
+      <div draggable={false} data-index={props.index} onDragEnter={props.onDragOver} onDragOver={props.onDragOver} className="draggable-area arrow-draggable" style={{
+        "position": "absolute",
         "top": `${p1.y - 50 + window.scrollY}px`,
-        "left": `${p2.x - p1.x > 0 ? p1.x - 2 + window.scrollX : p2.x - 4 + window.scrollX}px`,
-        "width": "100vw",
+        "left": `0px`,
+        "width": "100%",
       }}>Drop here</div>
     </>
   )
