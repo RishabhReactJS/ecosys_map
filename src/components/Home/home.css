@@ -5,7 +5,6 @@
 }
 
 .flows-content {
-    margin-top: 130px;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -29,7 +28,7 @@
 
 .flows-content {
     max-width: 1280px;
-    margin: 130px auto;
+    margin: 64px auto;
 }
 
 .create-flow-form {

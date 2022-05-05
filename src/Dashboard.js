@@ -170,7 +170,7 @@ function Dashboard() {
     <div className="App">
       {showModal && <AddStep stepID={addStepId} closeModal={handleCloseModal} setfrom={setaddStepFrom} from={addStepFrom} to={addStepTo} message={addStepMessage} emotion={addStepEmoji} setShowModal={setShowModal} createStep={createStep} updateStep={updateStep} actors={firebaseActors} />
       }
-      <div className={"header"}> <Header /> </div>
+      <Header />
       <ul className="actors">
         {
           firebaseActors.map((actor, index) => (

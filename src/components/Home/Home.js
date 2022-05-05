@@ -46,7 +46,7 @@ export default function Home() {
 
     return (
         <div className="homepage">
-            <div className="header"><Header /></div>
+            <Header />
             <div className="flows-content">
                 <div className="toolbar">
                     <h1 className="title text-white">Dashboard</h1>
@@ -58,7 +58,7 @@ export default function Home() {
                                 Create Flow
                             </button>
                         </div>
-                        : <button className="btn create-flow" onClick={() => setisCreateFlow(true)}>Create flow</button>
+                        : <button className="button create-flow" onClick={() => setisCreateFlow(true)}>Create flow</button>
                     }
                 </div>
                 {userFlows.length > 0 ? <FlowsCard userFlows={userFlows} navigate={navigate} /> : null}
