@@ -171,33 +171,45 @@ function Dashboard() {
       {showModal && <AddStep stepID={addStepId} closeModal={handleCloseModal} setfrom={setaddStepFrom} from={addStepFrom} to={addStepTo} message={addStepMessage} emotion={addStepEmoji} setShowModal={setShowModal} createStep={createStep} updateStep={updateStep} actors={firebaseActors} />
       }
       <Header />
-      <ul className="actors">
-        {
-          firebaseActors.map((actor, index) => (
-            <>
-              <li className="Dropable-list">
-                <div draggable={false} data-index={index} onDragOver={handleDragOver} className="Dropable-actor">
-                </div>
-              </li>
-              <li data-id={actor.id} id={actor.id} key={actor.id} className="">
-                <Actor
-                  onDragEnd={handleDragEnd}
-                  onDragStart={handleDragStart} position={index} actor={actor} updateActorAPI={updateActorAPI} text={actor.name}>
-                  {firebaseSteps?.map((step, sIndex) => <Threads onDragOver={handleDragOver} data-id={step.id} step={step} actor={actor.id} id={`${sIndex}_${actor.id}`} active={true} />)}
-                  <Threads hadleAddStep={hadleAddStepButton} actorId={actor.id} id={`${firebaseSteps.length}_${actor.id}`} />
-                </Actor>
-              </li>
-            </>
-          ))}
-        <li id="new_actor" key="new_actor" className="new_actor">
-          <Actor updateActorAPI={addActorAPI} text="" >
-            {firebaseSteps?.map((step, index) => <Threads active={true} id={`${index}_a_n`} />)}
-            <Threads active={true} actorId="_a_n" id={`${firebaseSteps.length + 1}_a_n`} />
-          </Actor>
-        </li>
-      </ul>
+      <div className="overflowthis">
+        <div className="actors-container">
+          <ul className="actors">
+            {
+              firebaseActors.map((actor, index) => (
+                <>
+                  <li className="Dropable-list">
+                    <div draggable={false} data-index={index} onDragOver={handleDragOver} className="Dropable-actor">
+                    </div>
+                  </li>
+                  <li data-id={actor.id} id={actor.id} key={actor.id} className="">
+                    <Actor
+                      onDragEnd={handleDragEnd}
+                      onDragStart={handleDragStart} position={index} actor={actor} updateActorAPI={updateActorAPI} text={actor.name}>
+                      {firebaseSteps?.map((step, sIndex) => <Threads onDragOver={handleDragOver} data-id={step.id} step={step} actor={actor.id} id={`${sIndex}_${actor.id}`} active={true} />)}
+                      <Threads hadleAddStep={hadleAddStepButton} actorId={actor.id} id={`${firebaseSteps.length}_${actor.id}`} />
+                    </Actor>
+                  </li>
+                </>
+              ))}
+            <li className="Dropable-list">
+              <div draggable={false} data-index={firebaseActors.length} onDragOver={handleDragOver} className="Dropable-actor">
+              </div>
+            </li>
+            <li id="new_actor" key="new_actor" className="new_actor">
+              <Actor updateActorAPI={addActorAPI} text="" >
+                {firebaseSteps?.map((step, index) => <Threads active={true} id={`${index}_a_n`} />)}
+                <Threads active={true} actorId="_a_n" id={`${firebaseSteps.length + 1}_a_n`} />
+              </Actor>
+            </li>
+          </ul>
+          <div className="arrow-container">
+            {rendered && <CreateArrow />}
+          </div>
+        </div>
+      </div>
+
+
       {/* <ul onDragOver={handleDragOver}> */}
-      {rendered && <CreateArrow />}
       {/* </ul> */}
       <button className="add-step-btn" onClick={openStepModal}>+ Add Step</button>
     </div>

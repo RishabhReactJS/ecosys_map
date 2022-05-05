@@ -31,13 +31,19 @@ body {
   }
 }
 
-.actors {
+/* .actors {
   display: flex;
   direction: ltr;
   gap: 25px;
   scroll-snap-type: x mandatory;
   margin-top: 64px;
   padding-top: 16px;
+} */
+
+.actors {
+  display: grid;
+  grid-auto-flow: column;
+  width: max-content;
 }
 
 li {
@@ -167,4 +173,19 @@ input:focus::placeholder {
   background-color: aliceblue;
   color: aquamarine;
   height: fit-content;
+}
+
+.arrow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.overflowthis {
+  position: absolute;
+  overflow: auto;
+  width: 100vw;
+  height: 100vh;
 }
