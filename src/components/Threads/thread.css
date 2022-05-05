@@ -1,49 +1,51 @@
-.thread-container{
-    top: 50px;
+.thread-container {
+    /* top: 50px; */
     position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
 .vl {
     border-left: 2px solid hsla(233, 92%, 75%, 0.48);
     height: 96px;
-  }
+}
+
 .Dropable-actor {
     border-left: 100px solid rgb(0 0 0 / 0%);
     height: 100vh;
     margin-top: 50px;
-  }
+}
 
-  .Dropable-list{
-      z-index: 100;
-  }
-  
-  .thread-add-btn{
-      border-radius: 999px;
-      position: absolute;
-      bottom: 0;
-      height: 16px;
-      width: 16px;
-      font-size: 12px;
-      line-height: 1;
-      background:rgba(255, 255, 255, 0.596);
-      display: block;
-      color: #1D2F6F;
-      font-weight: 800;
-      border:none;
-      opacity: 0.05;
-      transition-property: opacity;
-      transition-duration: 0.3s;
-  }
+.Dropable-list {
+    z-index: 100;
+}
 
-  .thread-add-btn:hover{
-      opacity: 1;
-      border:none;
-  }
+.thread-add-btn {
+    border-radius: 999px;
+    position: absolute;
+    bottom: 0;
+    height: 16px;
+    width: 16px;
+    font-size: 12px;
+    line-height: 1;
+    background: rgba(255, 255, 255, 0.596);
+    display: block;
+    color: #1D2F6F;
+    font-weight: 800;
+    border: none;
+    opacity: 0.05;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+}
 
-  .active{
+.thread-add-btn:hover {
+    opacity: 1;
+    border: none;
+}
+
+.active {
     visibility: hidden;
     opacity: 0.1;
-    border:none;
+    border: none;
 }

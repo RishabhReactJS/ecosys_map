@@ -94,8 +94,8 @@ li {
 }
 
 .arrow-edit {
-  right: 16px;
-  bottom: 16px;
+  right: calc(36px);
+  top: calc(100% - 26px);
   position: absolute;
   display: flex;
   align-items: flex-end;
@@ -193,7 +193,9 @@ input:focus::placeholder {
   position: absolute;
   overflow: auto;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 64px);
+  margin-top: 64px;
+  padding-top: 16px;
 }
 
 .actor-txt {
