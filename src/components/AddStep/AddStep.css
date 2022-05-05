@@ -13,12 +13,12 @@
     width: 480px;
   } */
 
-  .step-form {
+.step-form {
     z-index: 999;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap:16px;
+    gap: 16px;
     position: fixed;
     background: white;
     padding: 16px;
@@ -30,7 +30,7 @@
     transform: translate(-50%, -50%);
 }
 
-.field{
+.field {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -38,19 +38,19 @@
     gap: 8px
 }
 
-.value{
+.value {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: -webkit-fill-available;
 }
 
-.list{
+.list {
     gap: 12px;
     flex-wrap: wrap;
 }
 
-.textbox{
+.textbox {
     width: -webkit-fill-available;
     height: fit-content;
     min-height: 4em;
@@ -71,26 +71,33 @@
     resize: none;
 }
 
-.emoji-picker{
+.emoji-picker {
     height: 200px;
     overflow: scroll;
 }
 
-.emoji-chip >img{
+.emoji-chip>img {
     height: 2em;
     width: 2em;
 }
 
-.modal {
-    position: fixed; /* Stay in place */
-    z-index: 9998; /* Sit on top */
+.add-modal {
+    position: fixed;
+    /* Stay in place */
+    z-index: 9998;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Black w/ opacity */
     backdrop-filter: blur(4px);
 
-  }
+}
