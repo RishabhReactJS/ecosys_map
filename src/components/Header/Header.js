@@ -20,15 +20,19 @@ export default function Header() {
             home
           </span>
         </Link>
-        <span className="text-white label">Sequential Diagram</span>
+        <span className="text-white label">/  Sequential Diagram</span>
       </div>
       <div className="right-side">
-        <label className="text-white label">
-          Email: {localStorage.getItem('email')}
-        </label>
-        <button className="button" onClick={handleSingout}>
-          Logout
-        </button>
+        <div className="header-account">
+          <span class="material-symbols-outlined">
+            account_circle
+          </span>
+          <span className="text-white label">{localStorage.getItem('email')}</span>
+        </div>
+
+        <span class="material-symbols-outlined" onClick={handleSingout}>
+          logout
+        </span>
       </div>
       {/* <span className="left-container"> */}
       {/* <button className="margin-left logout-button" onClick={() => handelDeleteAll("steps", "PkhOn8n6nEeYHmR3sM0P")}>

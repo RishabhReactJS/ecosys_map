@@ -1,6 +1,7 @@
 @import url("https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
 .material-symbols-outlined {
+  color: #fff;
   font-variation-settings:
     'FILL'0,
     'wght'400,
@@ -12,13 +13,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
+  padding: 20px 16px;
 }
 
 .left-side {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 4px;
 }
 
 .right-side {
@@ -26,6 +27,12 @@
   align-items: center;
   justify-content: flex-end;
   gap: 16px;
+}
+
+.header-account {
+  display: flex;
+  gap: 6px;
+  align-items: center;
 }
 
 .home-link {
