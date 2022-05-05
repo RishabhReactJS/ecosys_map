@@ -1,38 +1,45 @@
-.login-component {
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+.page {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-    .login-form {
-      width: 20rem;
-      height: 12rem;
-      padding: 20px;
-  
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      border: 1px solid blanchedalmond;
-      border-radius: 5px;
-      margin: -70px 0 0 -170px;
-      background: white;
-    }
-    .input-container {
-      display: block;
-      background: transparent;
-      text-align: start;
-    }
-  
-    .input-box {
-      display: block;
-      text-align: center;
-      margin: auto;
-      padding: 7px;
-      margin-top: 1rem;
-      border: 1px solid blanchedalmond;
-    }
-  
-    .login-button {
-      padding: 10px;
-      margin-top: 1rem;
-      margin-right: 1rem;
-      border: 1px solid blanchedalmond;
-      border-radius: 5px;
-      background: white;
-    }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-component {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  min-width: 600px;
+  background-color: #fff;
+  gap: 16px;
+  padding-top: 24px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}

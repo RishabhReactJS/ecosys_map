@@ -43,17 +43,17 @@ export default function AddStep(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if(props.stepID)
+        if (props.stepID)
             props.updateStep(props.stepID, from, to, message, emotion || "")
         else
             props.createStep(from, to, message, emotion || "")
-            
+
         props.closeModal()
     }
-    
+
     return (
 
-        <form onSubmit={handleSubmit} className="modal">
+        <form onSubmit={handleSubmit} className="add-modal">
             <div className="step-form">
                 <button onClick={props.closeModal} >Close</button>
                 <div className="field">

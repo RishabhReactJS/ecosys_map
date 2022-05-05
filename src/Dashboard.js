@@ -106,6 +106,7 @@ function Dashboard() {
   }
 
   const openStepModal = (e) => {
+    console.log(`add button has been clicked`)
     e.preventDefault();
     setShowModal(true);
   }

@@ -69,36 +69,38 @@ export default function Login() {
 
   if (!auth.userId) {
     return (
-      <div className="login-component">
-        <form className="login-form" onChange={handelChenge}>
-          {/* <label className="input-container">
-            Enter Email */}
-          <input
-            placeholder="EmailID"
-            className="input-box"
-            type="email"
-            name="email"
-            value={email}
-          />
-          {/* </label> */}
-          {/* <label className="input-container">
-            Enter password */}
-          <input
-            placeholder="password"
-            className="input-box"
-            type="password"
-            name="password"
-            value={password}
-          />
-          {/* </label> */}
-          <button className="login-button" onClick={event => handleLogin(event)}>
-            Login
-          </button>
-          <button className="login-button" onClick={event => handleSingup(event)}>
-            Singup
-          </button>
-        </form>
+      <div className="page">
+        <div className="login-component">
+          <h2 className="title is-3">Login/Signup</h2>
+          <form className="login-form" onChange={handelChenge}>
+            <div className="login-inputs">
+              <input
+                placeholder="enter email id"
+                className="email-input input"
+                type="email"
+                name="email"
+                value={email}
+              />
+              <input
+                placeholder="password"
+                className="password-input input"
+                type="password"
+                name="password"
+                value={password}
+              />
+            </div>
+            <div className="login-buttons">
+              <button className="login button is-light" onClick={event => handleLogin(event)}>
+                Login
+              </button>
+              <button className="signup button is-light" onClick={event => handleSingup(event)}>
+                Sign Up
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
+
     );
   }
   return <Navigate to="/home" replace state={{ path: location.pathname }} />
