@@ -95,7 +95,7 @@ li {
 
 .arrow-edit {
   right: calc(36px);
-  top: calc(100% - 26px);
+  top: calc(50% - 17px);
   position: absolute;
   display: flex;
   align-items: flex-end;

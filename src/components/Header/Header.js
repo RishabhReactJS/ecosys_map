@@ -3,7 +3,7 @@ import { handelLogout, handelDeleteAll } from '../../utils/firebase'
 import './index.css'
 import useAuth from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
-export default function Header() {
+export default function Header(props) {
 
   const auth = useAuth();
 
@@ -20,7 +20,7 @@ export default function Header() {
             home
           </span>
         </Link>
-        <span className="text-white label">/  Sequential Diagram</span>
+        {props.flowName && <span className="text-white label">{`  / ${props.flowName}`}</span>}
       </div>
       <div className="right-side">
         <div className="header-account">

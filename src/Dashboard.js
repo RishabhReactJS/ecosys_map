@@ -15,6 +15,7 @@ import { useParams } from "react-router-dom";
 function Dashboard() {
   const [actors, setactors] = useState();
   const [steps, setsteps] = useState();
+  const [filename, setFilename] = useState();
   const [firebaseSteps, setfirebaseSteps] = useState([]);
   const [rendered, setrendered] = useState(false)
   const [firebaseActors, setfirebaseActors] = useState([]);
@@ -33,6 +34,7 @@ function Dashboard() {
     // setTest()
     getAllActorAPI();
     getAllStepsAPI();
+    getFlowDetails();
     console.log('in useEffect getAllActorAPI getAllStepsAPI>>>')
   }, [])
 
@@ -43,6 +45,13 @@ function Dashboard() {
       setrendered(false)
   }, [firebaseSteps])
 
+  const getFlowDetails = async () => {
+    const db = firebase.firestore();
+    const file = await db
+      .collection(`flows`).doc(`${params.flowId}`).get()
+    setFilename(file.data())
+    console.log(`flow name is ${file.data()}`)
+  }
   const handleEditStep = (stepDetail, e) => {
     e.stopPropagation();
     setaddStepMessage(stepDetail.message)
@@ -170,7 +179,7 @@ function Dashboard() {
     <div className="App">
       {showModal && <AddStep stepID={addStepId} closeModal={handleCloseModal} setfrom={setaddStepFrom} from={addStepFrom} to={addStepTo} message={addStepMessage} emotion={addStepEmoji} setShowModal={setShowModal} createStep={createStep} updateStep={updateStep} actors={firebaseActors} />
       }
-      <Header />
+      <Header flowName={filename ? filename.name : null} />
       <div className="overflowthis">
         <div className="actors-container">
           <ul className="actors">
