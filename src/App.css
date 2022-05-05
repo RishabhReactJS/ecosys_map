@@ -98,7 +98,7 @@ li {
 .draggable-area {
   color: #111b41;
   cursor: default;
-  background: azure;
+  background: rgba(0, 0, 0, 0.2);
   width: 100%;
   z-index: 101;
 }

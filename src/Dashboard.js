@@ -8,7 +8,7 @@ import { Arrow } from "./components/Arrow/Arrow";
 import AddStep from "./components/AddStep/AddStep"
 import firebase, { setTest, getAPI, updateAPI, addAPI, deleteAPI, getSubCollectionAPI } from "./utils/firebase";
 import './components/Threads/thread.css';
-import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
+import Draggable, { DraggableCore } from 'react-draggable'; // Both at the same time
 import Header from './components/Header/Header'
 import { useParams } from "react-router-dom";
 
@@ -29,7 +29,7 @@ function Dashboard() {
   const params = useParams();
 
 
-  useEffect( () => {
+  useEffect(() => {
     // setTest()
     getAllActorAPI();
     getAllStepsAPI();
@@ -44,13 +44,13 @@ function Dashboard() {
   }, [firebaseSteps])
 
   const handleEditStep = (stepDetail, e) => {
-      e.stopPropagation();
-      setaddStepMessage(stepDetail.message)
-      setaddStepTo(stepDetail.to)
-      setaddStepFrom(stepDetail.from)
-      setaddStepEmoji(stepDetail.emotion)
-      setaddStepID(stepDetail.id)
-      setShowModal(true);
+    e.stopPropagation();
+    setaddStepMessage(stepDetail.message)
+    setaddStepTo(stepDetail.to)
+    setaddStepFrom(stepDetail.from)
+    setaddStepEmoji(stepDetail.emotion)
+    setaddStepID(stepDetail.id)
+    setShowModal(true);
   }
 
   const handleDeleteStep = async (stepDetail, e) => {
@@ -67,14 +67,18 @@ function Dashboard() {
     // console.log('in actorsAData >>>> ', actorsAData);
     const actorsData = await getSubCollectionAPI("actors", params.flowId);
     console.log('in getAllActorAPI >>>> ', actorsData);
-    setfirebaseActors(actorsData.map(doc => { return { ...doc.data(), "id": doc.id } }));
+    setfirebaseActors(actorsData.map(doc => { return { ...doc.data(), "id": doc.id } }).sort(function (a, b) {
+      return a.order - b.order;
+    }));
   }
 
   const getAllStepsAPI = async () => {
     // const stepsData = await getAPI("steps")
     const stepsData = await getSubCollectionAPI("steps", params.flowId);
     console.log('in stepsData >>>> ', stepsData)
-    setfirebaseSteps(stepsData.map(doc => ({ ...doc.data(), "id": doc.id })))
+    setfirebaseSteps(stepsData.map(doc => ({ ...doc.data(), "id": doc.id })).sort(function (a, b) {
+      return a.order - b.order;
+    }))
   }
 
   const updateActorAPI = async (newName, actor) => {
@@ -129,11 +133,11 @@ function Dashboard() {
   }
 
   const handleDragStart = (e) => {
-    if(e.currentTarget?.dataset?.index)
+    if (e.currentTarget?.dataset?.index)
       dragged = e.currentTarget?.dataset;
   };
   const handleDragEnd = async (e) => {
-    if(dragged.index !== over){
+    if (dragged.index !== over) {
       console.log('need to update position from ', dragged, ' to ', over);
       // await updateAPI('steps', dragged.id, { over })
     }
@@ -143,7 +147,7 @@ function Dashboard() {
     console.log('in handleDragOver >>>>> ', e.target?.dataset)
     e.preventDefault();
     e.stopPropagation();
-      over = e.target?.dataset?.index;
+    over = e.target?.dataset?.index;
   }
 
   const CreateArrow = () => {
@@ -171,22 +175,23 @@ function Dashboard() {
       }
       <div className={"header"}> <Header /> </div>
       <ul className="actors">
-        {firebaseActors.map((actor, index) => (
-          <>
-          <li className="Dropable-list">
-                  <div draggable={false} data-index={index} onDragOver={handleDragOver} className="Dropable-actor">
-            </div>
-          </li>
-          <li data-id={actor.id} id={actor.id} key={actor.id} className="">
-            <Actor 
-              onDragEnd={handleDragEnd} 
-              onDragStart={handleDragStart} position={index} actor={actor} updateActorAPI={updateActorAPI} text={actor.name}>
-              {firebaseSteps?.map((step, sIndex) => <Threads onDragOver={handleDragOver} data-id={step.id} step={step} actor={actor.id} id={`${sIndex}_${actor.id}`} active={true} />)}
-              <Threads hadleAddStep={hadleAddStepButton} actorId={actor.id} id={`${firebaseSteps.length}_${actor.id}`} />
-            </Actor>
-          </li>
-          </>
-        ))}
+        {
+          firebaseActors.map((actor, index) => (
+            <>
+              <li className="Dropable-list">
+                <div draggable={false} data-index={index} onDragOver={handleDragOver} className="Dropable-actor">
+                </div>
+              </li>
+              <li data-id={actor.id} id={actor.id} key={actor.id} className="">
+                <Actor
+                  onDragEnd={handleDragEnd}
+                  onDragStart={handleDragStart} position={index} actor={actor} updateActorAPI={updateActorAPI} text={actor.name}>
+                  {firebaseSteps?.map((step, sIndex) => <Threads onDragOver={handleDragOver} data-id={step.id} step={step} actor={actor.id} id={`${sIndex}_${actor.id}`} active={true} />)}
+                  <Threads hadleAddStep={hadleAddStepButton} actorId={actor.id} id={`${firebaseSteps.length}_${actor.id}`} />
+                </Actor>
+              </li>
+            </>
+          ))}
         <li id="new_actor" key="new_actor" className="new_actor">
           <Actor updateActorAPI={addActorAPI} text="" >
             {firebaseSteps?.map((step, index) => <Threads active={true} id={`${index}_a_n`} />)}
