@@ -67,8 +67,8 @@ li {
 }
 
 .arrow-edit {
-  right: calc(36px);
-  top: calc(50% - 17px);
+  right: calc(50% - 66px);
+  top: -34px;
   position: absolute;
   display: flex;
   align-items: flex-end;
@@ -78,6 +78,7 @@ li {
   border: radius 2px;
   border: 1px solid rgba(117, 117, 117, 0.4);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), 0px 2px 21px rgba(0, 0, 0, 0.2);
+  z-index: 999;
 }
 
 .arrow-emoji {
