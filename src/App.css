@@ -195,7 +195,7 @@ input:focus::placeholder {
   width: 100vw;
   height: calc(100vh - 64px);
   margin-top: 64px;
-  padding-top: 16px;
+  padding: 16px 0px;
 }
 
 .actor-txt {

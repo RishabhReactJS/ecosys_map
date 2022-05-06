@@ -58,7 +58,7 @@ export const getSubCollectionAPI = async (collectionName, flowId) => {
 export const getUserFlows = async (userId) => {
   const db = firebase.firestore();
   const editableFlowsdata = await db
-    .collection('flows').orderBy("updated_at", "asc")
+    .collection('flows').orderBy("updated_at", "desc")
     .where("Access.Editors", "array-contains", userId)
     .get();
   const viewablwFlowsdata = await db

@@ -15,12 +15,13 @@ export function Arrow(props) {
   }, [props.start, props.end])
 
   const getWidth = () => p2.x - p1.x > 0 ? Math.abs(p2.x - p1.x) + 22 : Math.abs(p2.x - p1.x) + 22
+  const overflowContainer = document.querySelector(".overflowthis");
   return (
     <>
       <div draggable={true} onDragOver={(event) => event.preventDefault} onDragStart={props.onDragStart} onDragEnd={props.onDragEnd} data-id={props.stepDetail.id} data-index={props.index} className="svg-container" style={{
         "position": "absolute",
-        "top": `${p1.y - 106 + window.scrollY}px`,
-        "left": `${p2.x - p1.x > 0 ? p1.x - 2 + window.scrollX : p2.x - 4 + window.scrollX}px`,
+        "top": `${p1.y - 106 + overflowContainer.scrollTop}px`,
+        "left": `${p2.x - p1.x > 0 ? p1.x - 2 + overflowContainer.scrollLeft : p2.x - 4 + overflowContainer.scrollLeft}px`,
         "width": `${p2.x - p1.x > 0 ? Math.abs(p2.x - p1.x) + 22 : Math.abs(p2.x - p1.x) + 22}px`
       }}>
         {/* <div className="ordering">
