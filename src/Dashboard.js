@@ -103,13 +103,13 @@ function Dashboard() {
 
   const createStep = async (from, to, message, emotion) => {
     await addAPI('steps', params.flowId, { from, to, message, emotion, order: firebaseSteps.length })
-    setrendered(false)
+    // setrendered(false)
     await getAllActorAPI();
     await getAllStepsAPI();
   }
   const updateStep = async (id, from, to, message, emotion) => {
     await updateAPI('steps', params.flowId, id, { from, to, message, emotion })
-    setrendered(false)
+    // setrendered(false)
     await getAllActorAPI();
     await getAllStepsAPI();
   }
@@ -159,7 +159,7 @@ function Dashboard() {
   const ReorderSteps = async (triger, shift) => {
     await firebaseSteps.forEach(step => {
       if ((shift < 0 && (step.order < triger.order)) && (shift < 0 && step.order >= (triger.order + shift))) {
-        updateAPI('steps', params.flowId, step.id, { ...step, order: step.order + 1 })
+        updateAPI('steps', params.flowId, step.id, { ...step, order: step.order + 1 });
       }
       else if ((shift > 0 && (step.order > triger.order)) && (shift > 0 && step.order <= (triger.order + shift))) {
         updateAPI('steps', params.flowId, step.id, { ...step, order: step.order - 1 })
@@ -168,7 +168,7 @@ function Dashboard() {
         updateAPI('steps', params.flowId, step.id, { ...step, order: step.order + shift })
       }
     });
-    setrendered(false)
+    // setrendered(false)
     await getAllActorAPI();
     await getAllStepsAPI();
   }

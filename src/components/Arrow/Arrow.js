@@ -42,7 +42,7 @@ export function Arrow(props) {
             delete
           </span>
         </div>
-        <p className="arrow-message">{props?.message}</p>
+        <p className="arrow-message">{props?.stepDetail.order + 1}: {props?.message}</p>
         <Svg reverse={p2.x - p1.x < 0} length={Math.abs(p2.x - p1.x) + 18} arrowWidth={getWidth()} />
         <p className="arrow-emoji">{props?.emotion}</p>
       </div>
