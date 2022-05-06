@@ -19,7 +19,7 @@ export default function Login() {
   let location = useLocation();
   let auth = useAuth();
 
-  let from = location.state?.from?.pathname || "/dashboard";
+  let from = location.state?.from?.pathname || "/home";
 
   const handelChenge = event => {
     const value = event.target.value;

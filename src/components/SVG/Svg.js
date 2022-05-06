@@ -6,9 +6,9 @@ export default function Svg({ reverse, length, arrowWidth }) {
       height="20px"
       width={arrowWidth}
       overflow="auto"
-      stroke="#fff"
-      fill="#fff"
-      stroke-width="3"
+      stroke="#d0d0d0"
+      fill="#d0d0d0"
+      stroke-width="2"
       id="0_0_a_0_0_a_1"
       style={reverse ? { transform: "scale(-1,1)" } : null}
     >
