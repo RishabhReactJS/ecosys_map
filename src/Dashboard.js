@@ -214,6 +214,7 @@ function Dashboard() {
           <div className="arrow-container">
             {rendered && <CreateArrow />}
           </div>
+          <div className="actor-bg"></div>
         </div>
       </div>
 

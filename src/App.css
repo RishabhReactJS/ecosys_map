@@ -224,3 +224,12 @@ input:focus::placeholder {
 .svg-container:hover .arrow-edit {
   visibility: visible;
 }
+
+.actor-bg {
+  position: fixed;
+  top: 64px;
+  background: linear-gradient(rgba(20, 20, 20, 1), rgba(20, 20, 20, 0.7));
+  width: 100vw;
+  height: 72px;
+  z-index: 888;
+}
