@@ -12,34 +12,6 @@ body {
   width: 100vw;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* .actors {
-  display: flex;
-  direction: ltr;
-  gap: 25px;
-  scroll-snap-type: x mandatory;
-  margin-top: 64px;
-  padding-top: 16px;
-} */
-
 .actors {
   display: grid;
   grid-auto-flow: column;
@@ -91,6 +63,7 @@ li {
   cursor: default;
   width: 100%;
   z-index: 101;
+  visibility: hidden;
 }
 
 .arrow-edit {

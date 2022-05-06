@@ -156,6 +156,23 @@ function Dashboard() {
     over = e.target?.dataset?.index;
   }
 
+  const ReorderSteps = async (triger, shift) => {
+    await firebaseSteps.forEach(step => {
+      if ((shift < 0 && (step.order < triger.order)) && (shift < 0 && step.order >= (triger.order + shift))) {
+        updateAPI('steps', params.flowId, step.id, { ...step, order: step.order + 1 })
+      }
+      else if ((shift > 0 && (step.order > triger.order)) && (shift > 0 && step.order <= (triger.order + shift))) {
+        updateAPI('steps', params.flowId, step.id, { ...step, order: step.order - 1 })
+      }
+      else if (step.order === triger.order) {
+        updateAPI('steps', params.flowId, step.id, { ...step, order: step.order + shift })
+      }
+    });
+    setrendered(false)
+    await getAllActorAPI();
+    await getAllStepsAPI();
+  }
+
   const CreateArrow = () => {
     return firebaseSteps?.map((step, index) =>
       // <Draggable
@@ -169,7 +186,7 @@ function Dashboard() {
       // onDrag={handleDragOver}
       // onStop={handleDragEnd}>
       // <div onDragOver={handleDragOver} draggable={true} onDragStart={handleDragStart} onDragEnd={handleDragEnd} className={"arrow-list-itme"} key={step.id} id={step.id} data-id={step.id}> 
-      <Arrow onDragOver={handleDragOver} onDragStart={handleDragStart} onDragEnd={handleDragEnd} deleteStep={handleDeleteStep} editStep={handleEditStep} stepDetail={step} index={index} message={step.message} emotion={step.emotion} start={index + "_" + step.from} end={index + "_" + step.to} deltaActor={1} />
+      <Arrow ReorderSteps={ReorderSteps} onDragOver={handleDragOver} onDragStart={handleDragStart} onDragEnd={handleDragEnd} deleteStep={handleDeleteStep} editStep={handleEditStep} stepDetail={step} index={index} message={step.message} lastStepOrder={firebaseSteps.length} emotion={step.emotion} start={index + "_" + step.from} end={index + "_" + step.to} deltaActor={1} />
       // </div>
       // </Draggable>
     )

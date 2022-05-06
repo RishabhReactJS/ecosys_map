@@ -29,6 +29,12 @@ export function Arrow(props) {
         <button>🔽</button>
       </div> */}
         <div className="arrow-edit" >
+          {props.index > 0 && <span class="material-symbols-outlined" onClick={() => props.ReorderSteps(props.stepDetail, -1)}>
+            arrow_upward
+          </span>}
+          {props.index !== props.lastStepOrder - 1 && <span class="material-symbols-outlined" onClick={() => props.ReorderSteps(props.stepDetail, 1)}>
+            arrow_downward
+          </span>}
           <span class="material-symbols-outlined arrow-icon" onClick={(e) => props.editStep(props.stepDetail, e)}>
             edit
           </span>
