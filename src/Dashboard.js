@@ -157,20 +157,25 @@ function Dashboard() {
   }
 
   const ReorderSteps = async (triger, shift) => {
-    await firebaseSteps.forEach(step => {
-      if ((shift < 0 && (step.order < triger.order)) && (shift < 0 && step.order >= (triger.order + shift))) {
-        updateAPI('steps', params.flowId, step.id, { ...step, order: step.order + 1 });
-      }
-      else if ((shift > 0 && (step.order > triger.order)) && (shift > 0 && step.order <= (triger.order + shift))) {
-        updateAPI('steps', params.flowId, step.id, { ...step, order: step.order - 1 })
-      }
-      else if (step.order === triger.order) {
-        updateAPI('steps', params.flowId, step.id, { ...step, order: step.order + shift })
-      }
-    });
-    // setrendered(false)
-    await getAllActorAPI();
-    await getAllStepsAPI();
+    for (const step of firebaseSteps) {
+      {
+        if ((shift < 0 && (step.order < triger.order)) && (shift < 0 && step.order >= (triger.order + shift))) {
+          updateAPI('steps', params.flowId, step.id, { ...step, order: step.order + 1 });
+          console.log(`updated ${step.message}`)
+        }
+        else if ((shift > 0 && (step.order > triger.order)) && (shift > 0 && step.order <= (triger.order + shift))) {
+          updateAPI('steps', params.flowId, step.id, { ...step, order: step.order - 1 })
+          console.log(`updated ${step.message}`)
+        }
+        else if (step.order === triger.order) {
+          updateAPI('steps', params.flowId, step.id, { ...step, order: step.order + shift })
+          console.log(`updated ${step.message}`)
+        }
+      };
+      // setrendered(false)
+      await getAllActorAPI();
+      await getAllStepsAPI();
+    }
   }
 
   const CreateArrow = () => {
