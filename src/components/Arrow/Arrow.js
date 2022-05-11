@@ -18,7 +18,7 @@ export function Arrow(props) {
   const overflowContainer = document.querySelector(".overflowthis");
   return (
     <>
-      <div draggable={true} onDragOver={(event) => event.preventDefault} onDragStart={props.onDragStart} onDragEnd={props.onDragEnd} data-id={props.stepDetail.id} data-index={props.index} className="svg-container" style={{
+      <div draggable={true} onDragOver={(event) => event.preventDefault} onDragStart={props.onDragStart} onDragEnd={props.onDragEnd} data-id={props.stepDetail.id} id={props.stepDetail.id} data-index={props.index} className="svg-container" style={{
         "position": "absolute",
         "top": `${p1.y - 106 + overflowContainer.scrollTop}px`,
         "left": `${p2.x - p1.x > 0 ? p1.x - 2 + overflowContainer.scrollLeft : p2.x - 4 + overflowContainer.scrollLeft}px`,
@@ -29,16 +29,16 @@ export function Arrow(props) {
         <button>🔽</button>
       </div> */}
         <div className="arrow-edit" >
-          {props.index > 0 && <span class="material-symbols-outlined" onClick={() => props.ReorderSteps(props.stepDetail, -1)}>
+          {props.index > 0 && <span className="material-symbols-outlined" onClick={() => props.ReorderSteps(props.stepDetail, -1)}>
             arrow_upward
           </span>}
-          {props.index !== props.lastStepOrder - 1 && <span class="material-symbols-outlined" onClick={() => props.ReorderSteps(props.stepDetail, 1)}>
+          {props.index !== props.lastStepOrder - 1 && <span className="material-symbols-outlined" onClick={() => props.ReorderSteps(props.stepDetail, 1)}>
             arrow_downward
           </span>}
-          <span class="material-symbols-outlined arrow-icon" onClick={(e) => props.editStep(props.stepDetail, e)}>
+          <span className="material-symbols-outlined arrow-icon" onClick={(e) => props.editStep(props.stepDetail, e)}>
             edit
           </span>
-          <span class="material-symbols-outlined arrow-icon" onClick={(e) => props.deleteStep(props.stepDetail, e)}>
+          <span className="material-symbols-outlined arrow-icon" onClick={(e) => props.deleteStep(props.stepDetail, e)}>
             delete
           </span>
         </div>
@@ -46,11 +46,8 @@ export function Arrow(props) {
         <Svg reverse={p2.x - p1.x < 0} length={Math.abs(p2.x - p1.x) + 18} arrowWidth={getWidth()} />
         <p className="arrow-emoji">{props?.emotion}</p>
       </div>
-      <div draggable={false} data-index={props.index} onDragEnter={props.onDragOver} onDragOver={props.onDragOver} className="draggable-area arrow-draggable" style={{
-        "position": "absolute",
-        "top": `${p1.y - 50 + window.scrollY}px`,
-        "left": `0px`,
-        "width": "100%",
+      <div draggable={false} onDrop={props.onDrop} data-index={props.index} onDragEnter={props.onDragOver} onDragOver={props.onDragOver} className="non-draggable-area" style={{
+        "top": `${p1.y - 140 + window.scrollY}px`,
       }}>Drop here</div>
     </>
   )

@@ -58,14 +58,6 @@ li {
   padding: 0 20px;
 }
 
-.draggable-area {
-  color: #111b41;
-  cursor: default;
-  width: 100%;
-  z-index: 101;
-  visibility: hidden;
-}
-
 .arrow-edit {
   right: calc(50% - 66px);
   top: -34px;
@@ -181,12 +173,22 @@ input:focus::placeholder {
   position: relative;
 }
 
-.arrow-draggable {
-  opacity: 0;
-  background: rgba(0, 0, 0, 0.05);
+.non-draggable-area {
+  color: #141414;
+  cursor: default;
+  width: 100%;
+  z-index: 101;
+  position: absolute;
+  left: 0px;
+  width: 100%;
 }
 
-.arrow-draggable:hover {
+.non-arrow-draggable {
+  background: rgba(124, 204, 155, 0.05);
+  color: white;
+}
+
+.non-arrow-draggable:hover {
   opacity: 0.05;
   background: rgba(0, 0, 0, 0.1);
 }

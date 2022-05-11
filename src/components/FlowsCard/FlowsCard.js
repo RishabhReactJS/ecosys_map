@@ -33,9 +33,9 @@ export const FlowsCard = ({ userFlows, navigate, getFlows }) => {
                     <p className="flow-name" onClick={() => openFlow(flow.id)}>{flow.name}</p>
                     <p className="created-at">{flow.created_at.toDate().toLocaleString('en-in', { timeZone: 'IST' })}</p>
                     <p className="updated-at">{flow.updated_at.toDate().toLocaleString('en-in', { timeZone: 'IST' })}</p>
-                    {deleting == flow.id ? <span class="material-symbols-outlined">
+                    {deleting == flow.id ? <span className="material-symbols-outlined">
                         hourglass_empty
-                    </span> : <span class="material-symbols-outlined arrow-icon" onClick={() => deleteFlow(flow.id)}>
+                    </span> : <span className="material-symbols-outlined arrow-icon" onClick={() => deleteFlow(flow.id)}>
                         delete
                     </span>}
                 </div>

@@ -6,7 +6,7 @@ import dataFirebase from "./utils/dataFirebase.json";
 import React, { useState, useEffect } from 'react'
 import { Arrow } from "./components/Arrow/Arrow";
 import AddStep from "./components/AddStep/AddStep"
-import firebase, { setTest, getAPI, updateAPI, addAPI, deleteAPI, getSubCollectionAPI } from "./utils/firebase";
+import firebase, { setTest, getAPI, updateAPI, addAPI, deleteAPI, getSubCollectionAPI, moveDown, moveUp } from "./utils/firebase";
 import './components/Threads/thread.css';
 import Draggable, { DraggableCore } from 'react-draggable'; // Both at the same time
 import Header from './components/Header/Header'
@@ -101,7 +101,7 @@ function Dashboard() {
     await getAllStepsAPI();
   }
 
-  const createStep = async (from, to, message, emotion) => {
+  const addStepAPI = async (from, to, message, emotion) => {
     await addAPI('steps', params.flowId, { from, to, message, emotion, order: firebaseSteps.length })
     // setrendered(false)
     await getAllActorAPI();
@@ -141,6 +141,8 @@ function Dashboard() {
   const handleDragStart = (e) => {
     if (e.currentTarget?.dataset?.index)
       dragged = e.currentTarget?.dataset;
+
+    console.log('in handleDragStart >>>', dragged);
   };
   const handleDragEnd = async (e) => {
     if (dragged.index !== over) {
@@ -154,6 +156,20 @@ function Dashboard() {
     e.preventDefault();
     e.stopPropagation();
     over = e.target?.dataset?.index;
+  }
+
+  const handleDrop = async (e) => {
+    console.log('in handleDrop >>>>> ',e, e.target?.dataset, over , dragged.index)
+    e.preventDefault();
+    e.stopPropagation();
+    over = e.target?.dataset?.index;
+    if(over > dragged.index){
+      await moveDown("steps", dragged, +over, params.flowId, firebaseSteps);
+    }else{
+      await moveUp("steps", dragged, +over, params.flowId, firebaseSteps);
+    }
+    await getAllActorAPI();
+    await getAllStepsAPI();
   }
 
   const ReorderSteps = async (triger, shift) => {
@@ -180,26 +196,13 @@ function Dashboard() {
 
   const CreateArrow = () => {
     return firebaseSteps?.map((step, index) =>
-      // <Draggable
-      // axis="y"
-      // handle=".arrow-list-itme"
-      // defaultPosition={{x: 0, y: 0}}
-      // position={null}
-      // grid={[25, 25]}
-      // scale={1}
-      // onStart={handleDragStart}
-      // onDrag={handleDragOver}
-      // onStop={handleDragEnd}>
-      // <div onDragOver={handleDragOver} draggable={true} onDragStart={handleDragStart} onDragEnd={handleDragEnd} className={"arrow-list-itme"} key={step.id} id={step.id} data-id={step.id}> 
-      <Arrow ReorderSteps={ReorderSteps} onDragOver={handleDragOver} onDragStart={handleDragStart} onDragEnd={handleDragEnd} deleteStep={handleDeleteStep} editStep={handleEditStep} stepDetail={step} index={index} message={step.message} lastStepOrder={firebaseSteps.length} emotion={step.emotion} start={index + "_" + step.from} end={index + "_" + step.to} deltaActor={1} />
-      // </div>
-      // </Draggable>
+      <Arrow ReorderSteps={ReorderSteps} onDragOver={handleDragOver} onDragStart={handleDragStart} onDragEnd={handleDragEnd} deleteStep={handleDeleteStep} onDrop={handleDrop} editStep={handleEditStep} stepDetail={step} index={index} message={step.message} lastStepOrder={firebaseSteps.length} emotion={step.emotion} start={index + "_" + step.from} end={index + "_" + step.to} deltaActor={1} />
     )
   }
 
   return firebaseActors && firebaseSteps ? (
     <div className="App">
-      {showModal && <AddStep stepID={addStepId} closeModal={handleCloseModal} setfrom={setaddStepFrom} from={addStepFrom} to={addStepTo} message={addStepMessage} emotion={addStepEmoji} setShowModal={setShowModal} createStep={createStep} updateStep={updateStep} actors={firebaseActors} />
+      {showModal && <AddStep stepID={addStepId} closeModal={handleCloseModal} setfrom={setaddStepFrom} from={addStepFrom} to={addStepTo} message={addStepMessage} emotion={addStepEmoji} setShowModal={setShowModal} createStep={addStepAPI} updateStep={updateStep} actors={firebaseActors} />
       }
       <Header flowName={filename ? filename.name : null} />
       <div className="overflowthis">
@@ -208,7 +211,7 @@ function Dashboard() {
             {
               firebaseActors.map((actor, index) => (
                 <>
-                  <li className="Dropable-list">
+                  <li id={actor.id} className="Dropable-list">
                     <div draggable={false} data-index={index} onDragOver={handleDragOver} className="Dropable-actor">
                     </div>
                   </li>
@@ -222,7 +225,7 @@ function Dashboard() {
                   </li>
                 </>
               ))}
-            <li className="Dropable-list">
+            <li id="dropable_new_actor" className="Dropable-list">
               <div draggable={false} data-index={firebaseActors.length} onDragOver={handleDragOver} className="Dropable-actor">
               </div>
             </li>

@@ -43,7 +43,7 @@ export default function AddStep(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (props.stepID)
+        if (!!props.stepID)
             props.updateStep(props.stepID, from, to, message, emotion || "")
         else
             props.createStep(from, to, message, emotion || "")

@@ -16,7 +16,7 @@ export default function Header(props) {
     <header className="header">
       <div className="left-side">
         <Link className="home-link" to="/home">
-          <span class="material-symbols-outlined">
+          <span className="material-symbols-outlined">
             home
           </span>
         </Link>
@@ -24,13 +24,13 @@ export default function Header(props) {
       </div>
       <div className="right-side">
         <div className="header-account">
-          <span class="material-symbols-outlined">
+          <span className="material-symbols-outlined">
             account_circle
           </span>
           <span className="text-white label">{localStorage.getItem('email')}</span>
         </div>
 
-        <span class="material-symbols-outlined" onClick={handleSingout}>
+        <span className="material-symbols-outlined" onClick={handleSingout}>
           logout
         </span>
       </div>

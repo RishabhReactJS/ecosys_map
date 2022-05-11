@@ -87,6 +87,7 @@ export const getUserSubFlows = async (userId) => {
   return flowsData.docs.map(doc => doc.data())
 };
 
+// Add new Step and Actor in flow
 export const addAPI = async (collectionName, flowId, body) => {
   const db = firebase.firestore();
   await db.collection(`flows/${flowId}/${collectionName}`).add(body);
@@ -317,4 +318,34 @@ export const decPosition = (collectionName, docId, value) => { //value to inc th
   flowsRef.update({
     positon: firebase.firestore.FieldValue.decrement(value)
   });
+}
+
+
+export const moveDown = async (collectionName, dragged, updatedOrder, flowId, allElements) => {
+  const db = firebase.firestore();
+  const increment = firebase.firestore.FieldValue.increment;
+  const dataRef = await db
+    .collection(`flows/${flowId}/${collectionName}`)
+  console.log('in moveDown >>>', collectionName, dragged, allElements)
+// number of times to loop updatedOrder - dragged.index
+  for(let i = (+dragged.index) +1; i < updatedOrder ; i++){
+    let currentEle = allElements[i]
+    dataRef.doc(currentEle.id).update({order: increment(-1)})
+  }
+  dataRef.doc(dragged.id).update({order: increment(updatedOrder - (+dragged.index) -1)})
+  return true;
+}
+export const moveUp = async (collectionName, dragged, updatedOrder, flowId, allElements) => {
+  const db = firebase.firestore();
+  const increment = firebase.firestore.FieldValue.increment;
+  const dataRef = await db
+    .collection(`flows/${flowId}/${collectionName}`)
+  console.log('in moveDown >>>', collectionName, dragged, allElements)
+// number of times to loop updatedOrder - dragged.index
+  for(let i = (+dragged.index) -1; i >= updatedOrder ; i--){
+    let currentEle = allElements[i]
+    dataRef.doc(currentEle.id).update({order: increment(1)})
+  }
+  dataRef.doc(dragged.id).update({order: increment(updatedOrder - (+dragged.index))})
+  return true;
 }
