@@ -84,6 +84,7 @@ function Dashboard() {
     const stepsData = await getSubCollectionAPI("steps", params.flowId);
     console.log('in stepsData >>>> ', stepsData)
     setfirebaseSteps(stepsData.map(doc => ({ ...doc.data(), "id": doc.id })))
+    setrendered(true)
   }
 
   const updateActorAPI = async (newName, actor) => {
@@ -162,12 +163,13 @@ function Dashboard() {
     console.log('in handleDrop >>>>> ',e, e.target?.dataset, over , dragged.index)
     e.preventDefault();
     e.stopPropagation();
-    over = e.target?.dataset?.index;
-    if(over > dragged.index){
-      await moveDown("steps", dragged, +over, params.flowId, firebaseSteps);
+    over = +e.target?.dataset?.index;
+    if(over > +dragged.index){
+      await moveDown("steps", dragged, over, params.flowId, firebaseSteps);
     }else{
-      await moveUp("steps", dragged, +over, params.flowId, firebaseSteps);
+      await moveUp("steps", dragged, over, params.flowId, firebaseSteps);
     }
+    setrendered(false)
     await getAllActorAPI();
     await getAllStepsAPI();
   }
@@ -237,7 +239,7 @@ function Dashboard() {
             </li>
           </ul>
           <div className="arrow-container">
-            {rendered && <CreateArrow />}
+            {rendered ? <CreateArrow /> : null}
           </div>
           <div className="actor-bg"></div>
         </div>

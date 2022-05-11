@@ -330,9 +330,9 @@ export const moveDown = async (collectionName, dragged, updatedOrder, flowId, al
 // number of times to loop updatedOrder - dragged.index
   for(let i = (+dragged.index) +1; i < updatedOrder ; i++){
     let currentEle = allElements[i]
-    dataRef.doc(currentEle.id).update({order: increment(-1)})
+    await dataRef.doc(currentEle.id).update({order: increment(-1)})
   }
-  dataRef.doc(dragged.id).update({order: increment(updatedOrder - (+dragged.index) -1)})
+  await dataRef.doc(dragged.id).update({order: increment(updatedOrder - (+dragged.index) -1)})
   return true;
 }
 export const moveUp = async (collectionName, dragged, updatedOrder, flowId, allElements) => {
@@ -344,8 +344,8 @@ export const moveUp = async (collectionName, dragged, updatedOrder, flowId, allE
 // number of times to loop updatedOrder - dragged.index
   for(let i = (+dragged.index) -1; i >= updatedOrder ; i--){
     let currentEle = allElements[i]
-    dataRef.doc(currentEle.id).update({order: increment(1)})
+    await dataRef.doc(currentEle.id).update({order: increment(1)})
   }
-  dataRef.doc(dragged.id).update({order: increment(updatedOrder - (+dragged.index))})
+  await dataRef.doc(dragged.id).update({order: increment(updatedOrder - (+dragged.index))})
   return true;
 }

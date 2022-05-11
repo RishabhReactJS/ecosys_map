@@ -46,7 +46,7 @@ export function Arrow(props) {
         <Svg reverse={p2.x - p1.x < 0} length={Math.abs(p2.x - p1.x) + 18} arrowWidth={getWidth()} />
         <p className="arrow-emoji">{props?.emotion}</p>
       </div>
-      <div draggable={false} onDrop={props.onDrop} data-index={props.index} onDragEnter={props.onDragOver} onDragOver={props.onDragOver} className="non-draggable-area" style={{
+      <div id={props.stepDetail.id} draggable={false} onDrop={props.onDrop} data-index={props.index} onDragEnter={props.onDragOver} onDragOver={props.onDragOver} className="non-draggable-area non-arrow-draggable" style={{
         "top": `${p1.y - 140 + window.scrollY}px`,
       }}>Drop here</div>
     </>
