@@ -29,25 +29,26 @@ export function Arrow(props) {
         <button>🔽</button>
       </div> */}
         <div className="arrow-edit" >
-          {props.index > 0 && <span className="material-symbols-outlined" onClick={() => props.ReorderSteps(props.stepDetail, -1)}>
+          {/* {props.index > 0 && 
+          <span className="material-symbols-outlined" onClick={() => props.ReorderSteps(props.stepDetail, -1)}>
             arrow_upward
           </span>}
           {props.index !== props.lastStepOrder - 1 && <span className="material-symbols-outlined" onClick={() => props.ReorderSteps(props.stepDetail, 1)}>
             arrow_downward
-          </span>}
+          </span>} */}
           <span className="material-symbols-outlined arrow-icon" onClick={(e) => props.editStep(props.stepDetail, e)}>
             edit
           </span>
-          <span className="material-symbols-outlined arrow-icon" onClick={(e) => props.deleteStep(props.stepDetail, e)}>
+          {/* <span className="material-symbols-outlined arrow-icon" onClick={(e) => props.deleteStep(props.stepDetail, e)}>
             delete
-          </span>
+          </span> */}
         </div>
         <p className="arrow-message">{props?.stepDetail.order + 1}: {props?.message}</p>
         <Svg reverse={p2.x - p1.x < 0} length={Math.abs(p2.x - p1.x) + 18} arrowWidth={getWidth()} />
         <p className="arrow-emoji">{props?.emotion}</p>
       </div>
-      <div id={props.stepDetail.id} draggable={false} onDrop={props.onDrop} data-index={props.index} onDragEnter={props.onDragOver} onDragOver={props.onDragOver} className="non-draggable-area non-arrow-draggable" style={{
-        "top": `${p1.y - 140 + window.scrollY}px`,
+      <div id={props.stepDetail.id} draggable={false} onDrop={props.onDrop} data-index={props.index} onDragEnter={props.onDragOver} onDragOver={props.onDragOver} onDragLeave={props.onDragLeave} className="non-draggable-area non-arrow-draggable" style={{
+        "top": ` ${p1.y - 140 + overflowContainer.scrollTop}px`,
       }}>Drop here</div>
     </>
   )

@@ -16,6 +16,8 @@ body {
   display: grid;
   grid-auto-flow: column;
   width: max-content;
+  gap: 64px;
+  padding: 16px;
 }
 
 li {
@@ -59,8 +61,8 @@ li {
 }
 
 .arrow-edit {
-  right: calc(50% - 66px);
-  top: -34px;
+  right: calc(50% - 21px);
+  top: -24px;
   position: absolute;
   display: flex;
   align-items: flex-end;
@@ -184,8 +186,13 @@ input:focus::placeholder {
 }
 
 .non-arrow-draggable {
-  background: rgba(124, 204, 155, 0.05);
-  color: white;
+  opacity: 0;
+  /* color: white; */
+}
+
+.non-arrow-draggable.dragged-over-this {
+  opacity: 1;
+  border: 2px dashed #eeeeee;
 }
 
 .non-arrow-draggable:hover {
