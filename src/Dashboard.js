@@ -36,14 +36,17 @@ function Dashboard() {
     getAllStepsAPI();
     getFlowDetails();
     console.log('in useEffect getAllActorAPI getAllStepsAPI>>>')
+    return () => {
+      setrendered(false)
+    }
   }, [])
 
-  useEffect(() => {
-    if (firebaseSteps.length > 0)
-      setrendered(true)
-    else
-      setrendered(false)
-  }, [firebaseSteps])
+  // useEffect(() => {
+  //   if (firebaseSteps.length > 0)
+  //     setrendered(true)
+  //   else
+  //     setrendered(false)
+  // }, [firebaseSteps])
 
   const getFlowDetails = async () => {
     const db = firebase.firestore();
@@ -52,6 +55,7 @@ function Dashboard() {
     setFilename(file.data())
     console.log(`flow name is ${file.data()}`)
   }
+
   const handleEditStep = (stepDetail, e) => {
     e.stopPropagation();
     setaddStepMessage(stepDetail.message)
@@ -105,13 +109,13 @@ function Dashboard() {
   const addStepAPI = async (from, to, message, emotion) => {
     await addAPI('steps', params.flowId, { from, to, message, emotion, order: firebaseSteps.length })
     // setrendered(false)
-    await getAllActorAPI();
+    // await getAllActorAPI();
     await getAllStepsAPI();
   }
   const updateStep = async (id, from, to, message, emotion) => {
     await updateAPI('steps', params.flowId, id, { from, to, message, emotion })
     // setrendered(false)
-    await getAllActorAPI();
+    // await getAllActorAPI();
     await getAllStepsAPI();
   }
 
@@ -145,6 +149,7 @@ function Dashboard() {
 
     console.log('in handleDragStart >>>', dragged);
   };
+
   const handleDragEnd = async (e) => {
     if (dragged.index !== over) {
       console.log('need to update position from ', dragged, ' to ', over);
@@ -176,8 +181,8 @@ function Dashboard() {
     } else {
       await moveUp("steps", dragged, over, params.flowId, firebaseSteps);
     }
-    setrendered(false)
-    await getAllActorAPI();
+    // setrendered(false)
+    // await getAllActorAPI();
     await getAllStepsAPI();
   }
 
@@ -198,7 +203,7 @@ function Dashboard() {
         }
       };
       // setrendered(false)
-      await getAllActorAPI();
+      // await getAllActorAPI();
       await getAllStepsAPI();
     }
   }
